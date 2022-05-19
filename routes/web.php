@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('table', 'TableController@table')->name('table');
+
 
 Route::prefix('master')->name('master.')->namespace('Master')->group(function(){
     Route::get('/', 'DashboardController@index')->name('dashboard');

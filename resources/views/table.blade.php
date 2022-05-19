@@ -20,9 +20,19 @@
                         <h6 class="mb-0"><small>THIS MONTH</small></h6>
                         <h4 class="mt-0 text-info">$58,356</h4>
                     </div>
-                    
+                    <div class="spark-chart">
+                        <div id="monthchart"></div>
+                    </div>
                 </div>
-             
+                <div class="d-flex ml-2">
+                    <div class="chart-text mr-2">
+                        <h6 class="mb-0"><small>LAST MONTH</small></h6>
+                        <h4 class="mt-0 text-primary">$48,356</h4>
+                    </div>
+                    <div class="spark-chart">
+                        <div id="lastmonthchart"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
