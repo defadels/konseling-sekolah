@@ -14,7 +14,7 @@ class BKDitanggapiController extends Controller
      */
     public function index()
     {
-        //
+        return view('guru.bimbingan.ditanggapi.index');
     }
 
     /**

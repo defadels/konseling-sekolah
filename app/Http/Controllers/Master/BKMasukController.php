@@ -14,7 +14,7 @@ class BKMasukController extends Controller
      */
     public function index()
     {
-        //
+        return view('master.bimbingan.masuk.index');
     }
 
     /**

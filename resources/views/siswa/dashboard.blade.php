@@ -1,6 +1,6 @@
-@extends('layout.master_layout')
+@extends('layout.siswa_layout')
 
-@section('title','Data Kelas')
+@section('title','Dashboard Siswa')
 
 @section('content')
 <div class="page-wrapper">
@@ -9,21 +9,21 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 col-12 align-self-center">
-            <h3 class="text-themecolor mb-0">Data Kelas</h3>
+            <h3 class="text-themecolor mb-0">Halaman Dashboard</h3>
             <ol class="breadcrumb mb-0 p-0 bg-transparent">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Kelas</li>
+                <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </div>
         <div class="col-md-7 col-12 align-self-center d-none d-md-block">
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                        <a href="" class="btn btn-primary">+ Tambah Data</a>
+                       
                     </div>
-                
+                    
                 </div>
-                
+             
             </div>
         </div>
     </div>
@@ -38,42 +38,16 @@
         <!-- Start Page Content -->
         <!-- ============================================================== -->
         <!-- File export -->
-        
-
-        <!-- Column rendering -->
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data Kelas</h4>
-                        
-                        <div class="table-responsive">
-                            <table id="show_hide_col" class="table table-striped table-bordered display"
-                                style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Nama Kelas</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td><a href="" class="btn btn-info"><i class="fa fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning text-white"><i class="fa far fa-edit"></i></a></td>
-                                      
-                                    </tr>   
-                                </tbody>
-                         
-                            </table>
-                        </div>
-                    </div>
+                        <h2 class="card-title">Selamat Datang, </h2>
                 </div>
             </div>
         </div>
- 
+
+
         <!-- ============================================================== -->
         <!-- End PAge Content -->
         <!-- ============================================================== -->

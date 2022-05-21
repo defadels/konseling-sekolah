@@ -1,4 +1,4 @@
-@extends('layout.master_layout')
+@extends('layout.guru_layout')
 
 @section('title','Data Kelas')
 
@@ -19,7 +19,7 @@
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                        <a href="" class="btn btn-primary">+ Tambah Data</a>
+                        
                     </div>
                 
                 </div>

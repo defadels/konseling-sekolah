@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Guru;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class BKMasukController extends Controller
+class KelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class BKMasukController extends Controller
      */
     public function index()
     {
-        return view('guru.bimbingan.masuk.index');
+        return view('guru.kelas.index');
     }
 
     /**

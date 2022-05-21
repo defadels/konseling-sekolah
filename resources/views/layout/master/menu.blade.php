@@ -25,6 +25,10 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                    href="{{route('master.dashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                        class="hide-menu">Dashboard</span></a></li>
+                        
                 <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i>
                     <span class="hide-menu">Data User</span></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -43,10 +47,10 @@
                     <span class="hide-menu">Bimbingan Konseling</span>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="app-contacts.html" aria-expanded="false"><i class="mdi mdi-arrow-down-bold"></i><span
+                    href="{{route('master.bimbingan.masuk')}}" aria-expanded="false"><i class="mdi mdi-arrow-down-bold"></i><span
                         class="hide-menu">BK Masuk</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="app-contacts.html" aria-expanded="false"><i class="mdi mdi-check-all"></i><span
+                    href="{{route('master.bimbingan.ditanggapi')}}" aria-expanded="false"><i class="mdi mdi-check-all"></i><span
                         class="hide-menu">BK Ditanggapi</span></a></li>        
             </ul>
         </nav>

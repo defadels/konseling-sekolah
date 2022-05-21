@@ -10,8 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('materialpro/assets/images/favicon.png')}}">
-    <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('materialpro/assets/images/favicon1.png')}}">
+    <title>@yield('title')</title>
 	<link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
     <!-- This page plugin CSS -->
     <link href="{{asset('materialpro/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
