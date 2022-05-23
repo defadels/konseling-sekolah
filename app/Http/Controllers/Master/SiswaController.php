@@ -24,7 +24,11 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        $url = 'master.siswa.store';
+
+        $button = 'Simpan';
+
+        return view('master.siswa.form',compact('url','button'));
     }
 
     /**

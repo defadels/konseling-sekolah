@@ -24,7 +24,11 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        $url = 'master.kelas.store';
+
+        $button = 'Simpan';
+
+        return view('master.kelas.form',compact('url','button'));
     }
 
     /**

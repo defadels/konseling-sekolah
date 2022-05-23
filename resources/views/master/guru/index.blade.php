@@ -3,7 +3,7 @@
 @section('title','Data Guru')
 
 @section('content')
-<div class="page-wrapper">
+
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -19,7 +19,7 @@
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                        <a href="" class="btn btn-primary">+ Tambah Data</a>
+                        <a href="{{route('master.guru.create')}}" class="btn btn-primary">+ Tambah Data</a>
                     </div>
                 
                 </div>
@@ -48,6 +48,7 @@
                         <h4 class="card-title">Data Guru</h4>
                         
                         <div class="table-responsive">
+                            @if(count($daftar_guru)>0) 
                             <table id="show_hide_col" class="table table-striped table-bordered display"
                                 style="width:100%">
                                 <thead>
@@ -70,6 +71,9 @@
                                 </tbody>
                          
                             </table>
+                            @else
+                            <h2 class="text-center p-3">Data guru kosong</h2>
+                         @endif  
                         </div>
                     </div>
                 </div>

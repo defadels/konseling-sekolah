@@ -3,7 +3,7 @@
 @section('title','Data Siswa')
 
 @section('content')
-<div class="page-wrapper">
+
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -19,7 +19,7 @@
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                        <a href="" class="btn btn-primary">+ Tambah Data</a>
+                        <a href="{{route('master.siswa.create')}}" class="btn btn-primary">+ Tambah Data</a>
                     </div>
                 
                 </div>
@@ -45,7 +45,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data Guru</h4>
+                        <h4 class="card-title">Data Siswa</h4>
                         
                         <div class="table-responsive">
                             <table id="show_hide_col" class="table table-striped table-bordered display"
