@@ -3,7 +3,7 @@
 @section('title','Dashboard Siswa')
 
 @section('content')
-<div class="page-wrapper">
+<div class="page-wrapper"> 
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->

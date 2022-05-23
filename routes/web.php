@@ -74,7 +74,7 @@ Route::prefix('guru')->name('guru.')->namespace('Guru')->group(function(){
   
 
     Route::get('kelas','KelasController@index')->name('kelas');
-    Route::get('kelas/lihat/{kelas}', 'KelasController@show')->name('kelas.show');
+    Route::get('kelas/lihat/{kelas}', 'KelasController@show')->name('kelas.show'); 
 
     Route::get('bimbingan-konseling/masuk','BKMasukController@index')->name('bimbingan.masuk');
     Route::get('bimbingan-konseling/masuk/lihat/{bk}','BKMasukController@show')->name('bimbingan.masuk.show');
