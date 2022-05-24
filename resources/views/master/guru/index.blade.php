@@ -60,14 +60,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td><a href="" class="btn btn-info"><i class="fa fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning text-white"><i class="fa far fa-edit"></i></a></td>
-                                      
-                                    </tr>   
+                                    @foreach($daftar_guru as $guru) 
+                                <tr>
+                                    <td>{{$guru->nama}}</td>
+                                    <td>{{$guru->mapel}}</td>
+                                    <td>
+                                     <span class="badge bg-success text-white">   
+                                        {{ucfirst(trans($guru->status))}}</span></td>
+                                    <td>
+                                        <a href="{{route('master.guru.show',$guru->id)}}" title="Lihat" class="btn btn-md btn-info">
+                                            <i class="fas fa-eye"></i> Lihat
+                                        </a>
+                                        <a href="{{route('master.guru.edit',$guru->id)}}" title="Edit" class="btn btn-md btn-success text-white">
+                                            <i class="far fa-edit"></i> Edit
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                                @endforeach  
                                 </tbody>
                          
                             </table>

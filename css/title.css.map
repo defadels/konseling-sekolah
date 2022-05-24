@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,IAAI,EAAE,eAAe;CACtB",
+    "sources": [
+        "../public/materialpro/assets/libs/c3/src/scss/title.scss"
+    ],
+    "names": [],
+    "file": "title.css"
+}

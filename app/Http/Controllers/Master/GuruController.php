@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use Validator;
+use Str;
+use Illuminate\Support\Facades\Hash;
 
 class GuruController extends Controller
 {
@@ -14,7 +18,14 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('master.guru.index');
+        $daftar_guru = User::where('jenis','guru')->get();
+
+        $status= [
+            'aktif' => 'Aktif',
+            'nonaktif' => 'Nonaktif'
+        ];
+
+        return view('master.guru.index',compact('daftar_guru','status'));
     }
 
     /**
