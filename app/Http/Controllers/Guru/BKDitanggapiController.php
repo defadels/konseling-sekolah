@@ -4,6 +4,13 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\LayananBK;
+use App\User;
+use App\Kelas;
+use App\BKSiswa;
+use Auth;
+use Validator;
+use Carbon\Carbon;
 
 class BKDitanggapiController extends Controller
 {
@@ -14,7 +21,10 @@ class BKDitanggapiController extends Controller
      */
     public function index()
     {
-        return view('guru.bimbingan.ditanggapi.index');
+        $data_bk = LayananBK::orderBy('updated_at','ASC')->where('status','Sudah Ditanggapi')->get();
+
+        return view('guru.bimbingan.ditanggapi.index',compact('data_bk'));
+
     }
 
     /**
@@ -44,9 +54,11 @@ class BKDitanggapiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(LayananBK $bk)
     {
-        //
+        $daftar_siswa = BKSiswa::where('bk_siswa_id',$bk->id)->get();
+
+        return view('guru.bimbingan.ditanggapi.show',compact('bk','daftar_siswa'));
     }
 
     /**

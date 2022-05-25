@@ -47,6 +47,9 @@
                     <span class="hide-menu">Bimbingan Konseling</span>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                    href="{{route('master.laporan')}}" aria-expanded="false"><i class="mdi mdi-file-document"></i><span
+                        class="hide-menu">Laporan</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                     href="{{route('master.bimbingan.masuk')}}" aria-expanded="false"><i class="mdi mdi-arrow-down-bold"></i><span
                         class="hide-menu">BK Masuk</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"

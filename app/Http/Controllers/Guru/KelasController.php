@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Kelas;
+use Validator;
+use App\User;
 
 class KelasController extends Controller
 {
@@ -14,7 +17,8 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('guru.kelas.index');
+        $daftar_kelas = Kelas::get();
+        return view('guru.kelas.index',compact('daftar_kelas'));
     }
 
     /**
@@ -44,9 +48,10 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Kelas $kelas)
     {
-        //
+        $data_siswa = User::where('kelas_id',$kelas->id)->get();
+        return view('guru.kelas.show',compact('kelas','data_siswa'));
     }
 
     /**

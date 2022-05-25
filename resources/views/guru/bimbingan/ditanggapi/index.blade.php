@@ -1,10 +1,8 @@
 @extends('layout.guru_layout')
 
-@section('title','Data BK Sudah Ditanggapi')
-
+@section('title','Data BK Ditanggapi')
 
 @section('content')
-<div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -49,6 +47,7 @@
                         <h4 class="card-title">Data BK Sudah Ditanggapi</h4>
                         
                         <div class="table-responsive">
+                            @if(count($data_bk) > 0)  
                             <table id="show_hide_col" class="table table-striped table-bordered display"
                                 style="width:100%">
                                 <thead>
@@ -61,16 +60,23 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td><a href="" class="btn btn-info"><i class="fa fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning text-white"><i class="fa far fa-edit"></i></a></td>
-                                      
+                                        @foreach($data_bk as $bk)  
+                                        <tr>
+                                            <td>{{$bk->nomor_bk}}</td>
+                                            <td>{{$bk->dibuat_oleh->nama}}</td>
+                                            <td>{{trans(ucfirst($bk->jenis))}}</td>
+                                            <td> <a href="{{route('guru.bimbingan.ditanggapi.show',$bk->id)}}" title="Lihat" class="btn btn-md btn-info">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </tr>
+                                        @endforeach
                                     </tr>   
                                 </tbody>
                          
                             </table>
+                            @else
+                            <h2 class="text-center p-3">Data BK Ditanggapi Kosong</h2>
+                            @endif
                         </div>
                     </div>
                 </div>

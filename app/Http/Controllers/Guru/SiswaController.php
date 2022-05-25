@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use App\Kelas;
 
 class SiswaController extends Controller
 {
@@ -14,7 +16,9 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('guru.siswa.index');
+        $daftar_siswa = User::where('jenis','siswa')->get(); 
+
+        return view('guru.siswa.index',compact('daftar_siswa'));
     }
 
     /**

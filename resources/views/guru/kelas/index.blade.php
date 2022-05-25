@@ -3,7 +3,7 @@
 @section('title','Data Kelas')
 
 @section('content')
-<div class="page-wrapper">
+
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -16,7 +16,7 @@
             </ol>
         </div>
         <div class="col-md-7 col-12 align-self-center d-none d-md-block">
-            <div class="d-flex mt-2 justify-content-end"> 
+            <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
                         
@@ -48,6 +48,7 @@
                         <h4 class="card-title">Data Kelas</h4>
                         
                         <div class="table-responsive">
+                            @if(count($daftar_kelas)>0)
                             <table id="show_hide_col" class="table table-striped table-bordered display"
                                 style="width:100%">
                                 <thead>
@@ -58,16 +59,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td><a href="" class="btn btn-info"><i class="fa fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning text-white"><i class="fa far fa-edit"></i></a></td>
-                                      
-                                    </tr>   
+                                    @foreach($daftar_kelas as $kelas)
+                                <tr>
+                                    <td>{{$kelas->nama}}</td>
+                                    <td>{{$kelas->keterangan}}</td>
+                                    
+                                    <td>
+                                        <a href="{{route('guru.kelas.show',$kelas->id)}}" title="Lihat" class="btn btn-md btn-info">
+                                            <i class="fas fa-eye"></i> Lihat
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach   
                                 </tbody>
                          
-                            </table>
+                            </table>    
+
+                            @else 
+                            <h2 class="text-center p-3">Data kelas kosong</h2>
+                        @endif
                         </div>
                     </div>
                 </div>

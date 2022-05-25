@@ -3,7 +3,6 @@
 @section('title','Dashboard Guru')
 
 @section('content')
-<div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->

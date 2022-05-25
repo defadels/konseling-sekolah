@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 
 class GuruController extends Controller
 {
@@ -14,7 +15,14 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('guru.guru.index');
+        $daftar_guru = User::where('jenis','guru')->get();
+
+        $status= [
+            'aktif' => 'Aktif',
+            'nonaktif' => 'Nonaktif'
+        ];
+
+        return view('guru.guru.index',compact('daftar_guru','status'));
     }
 
     /**
@@ -44,9 +52,9 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $guru)
     {
-        //
+        return view('guru.guru.show',compact('guru'));
     }
 
     /**

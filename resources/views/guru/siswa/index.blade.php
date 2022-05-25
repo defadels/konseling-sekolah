@@ -3,7 +3,7 @@
 @section('title','Data Siswa')
 
 @section('content')
-<div class="page-wrapper">
+
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -19,7 +19,7 @@
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                       
+            
                     </div>
                 
                 </div>
@@ -45,9 +45,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data Guru</h4>
+                        <h4 class="card-title">Data Siswa</h4>
                         
                         <div class="table-responsive">
+                            @if(count($daftar_siswa)>0) 
                             <table id="show_hide_col" class="table table-striped table-bordered display"
                                 style="width:100%">
                                 <thead>
@@ -60,18 +61,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td><a href="" class="btn btn-info"><i class="fa fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning text-white"><i class="fa far fa-edit"></i></a></td>
-                                      
-                                    </tr>   
+                                    @foreach($daftar_siswa as $siswa)
+                                <tr>
+                                    <td>{{$siswa->nis}}</td>
+                                    <td>{{$siswa->nama}}</td>
+                                    <td>{{ucfirst(trans($siswa->jenis_kelamin))}}</td>
+                                    <td>{{$siswa->pilihan_kelas->nama}}</td>
+                                    <td>
+                                        <a href="{{route('master.siswa.show',$siswa->id)}}" title="Lihat" class="btn btn-md btn-info">
+                                            <i class="fas fa-eye"></i> Lihat
+                                        </a>
+                                        <a href="{{route('master.siswa.edit',$siswa->id)}}" title="Edit" class="btn btn-md btn-success text-white">
+                                            <i class="far fa-edit"></i> Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach  
                                 </tbody>
                          
                             </table>
+                            @else 
+                            <h2 class="text-center p-3">Data Siswa Kosong</h2>
+                           @endif 
                         </div>
                     </div>
                 </div>

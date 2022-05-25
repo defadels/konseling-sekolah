@@ -3,7 +3,7 @@
 @section('title','Data Guru')
 
 @section('content')
-<div class="page-wrapper">
+
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -19,7 +19,7 @@
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                      
+                       
                     </div>
                 
                 </div>
@@ -48,6 +48,7 @@
                         <h4 class="card-title">Data Guru</h4>
                         
                         <div class="table-responsive">
+                            @if(count($daftar_guru)>0) 
                             <table id="show_hide_col" class="table table-striped table-bordered display"
                                 style="width:100%">
                                 <thead>
@@ -59,17 +60,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td><a href="" class="btn btn-info"><i class="fa fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning text-white"><i class="fa far fa-edit"></i></a></td>
-                                      
-                                    </tr>   
+                                    @foreach($daftar_guru as $guru) 
+                                <tr>
+                                    <td>{{$guru->nama}}</td>
+                                    <td>{{$guru->mapel}}</td>
+                                    <td>
+                                     <span class="badge bg-success text-white">   
+                                        {{ucfirst(trans($guru->status))}}</span></td>
+                                    <td>
+                                        <a href="{{route('master.guru.show',$guru->id)}}" title="Lihat" class="btn btn-md btn-info">
+                                            <i class="fas fa-eye"></i> Lihat
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                                @endforeach  
                                 </tbody>
                          
                             </table>
+                            @else
+                            <h2 class="text-center p-3">Data guru kosong</h2>
+                         @endif  
                         </div>
                     </div>
                 </div>
