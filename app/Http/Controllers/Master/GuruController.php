@@ -99,9 +99,9 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $guru)
     {
-        //
+        return view('master.guru.show',compact('guru'));
     }
 
     /**
@@ -110,9 +110,13 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $guru)
     {
-        //
+        $url = 'master.guru.update';
+
+        $button = "Update";
+
+        return view('master.guru.form',compact('guru','url','button'));
     }
 
     /**
@@ -122,9 +126,46 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $guru)
     {
-        //
+        $input = $request->all();
+
+        $rules = [
+            'nama' => ['required'],
+            'nip' => ['max:20','unique:users,nip,'.$guru->id],
+            'email' => ['required','unique:users,email,'.$guru->id],
+            'mapel' => ['required'],
+            'alamat' => ['max:50'],
+            'nomor_hp' => ['regex:/^(^\+628\s?|^08)(\d{3,4}?){2}\d{2,4}$/','max:13']
+            
+        ];
+
+        $message = [
+            'nama.required' => 'Nama kelas harus diisi',
+            'nip.max' => 'NIP maksimal 20 karakter',
+            'email.required' => 'Email harus diisi',
+            'mapel.required' => 'Mata pelajaran harus diisi',
+            'alamat.max' => 'Alamat batas maksimal 300 karakter',
+            'nomor_hp.max' => 'Nomor handphone maksimal 13 digit',
+            'nomor_hp.regex' => 'Format nomor handphone salah. Contoh: 082273318016'
+        ];
+
+        $validates = Validator::make($input,$rules,$message)->validate();
+
+        $guru->nama = $request->nama;
+        $guru->nip = $request->nip;
+        $guru->email = $request->email;
+        if ($request->has('password') && $request->password != ''){
+            $guru->password = Hash::make($request->password);
+        }
+        $guru->mapel = $request->mapel;
+        $guru->alamat = $request->alamat;
+        $guru->nomor_hp = $request->nomor_hp;
+
+        $guru->save();
+
+        return redirect()->route('master.guru')
+        ->with('message',__('pesan.update',['module'=>$guru->nama]));
     }
 
     /**
@@ -133,8 +174,17 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $guru)
     {
-        //
+        try{
+            $nama = $guru->nama;
+
+            $guru->delete();
+        }catch(Exception $e){
+            return redirect()->route('master.guru')
+            ->with('error',__('pesan.error',['module'=>$nama]));
+        }
+            return redirect()->route('master.guru')
+            ->with('message',__('pesan.delete',['module'=>$nama]));
     }
 }

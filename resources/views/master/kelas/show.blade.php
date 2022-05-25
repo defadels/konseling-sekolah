@@ -9,10 +9,10 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 col-12 align-self-center">
-            <h3 class="text-themecolor mb-0">Form Data Guru</h3>
+            <h3 class="text-themecolor mb-0">Data Kelas</h3>
             <ol class="breadcrumb mb-0 p-0 bg-transparent">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Data Guru</li>
+                <li class="breadcrumb-item active">Data Kelas</li>
             </ol>
         </div>
         <div class="col-md-7 col-12 align-self-center d-none d-md-block">
@@ -39,41 +39,58 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">File export</h4>
+                        <h4 class="card-title">Lihat Data Kelas</h4>
                         <hr>
-                        <form action="{{route($url, $kelas->id ?? '')}}" method="post">
-                            @csrf
+                        <div class="form-group">
+                            <label for="nama">Nama Kelas</label>
                             
-                           @if(isset($kelas)) 
-                            @method('put')
-                           @endif
-    
-                          <div class="form-group">
-                              <label for="nama">Nama Kelas</label>
-                              <input type="text" name="nama" id="nama" value="{{old('nama') ?? $kelas->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror" placeholder="Masukkan nama kelas">
-                                
-                              @error('nama')
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                @enderror
-    
-                            </div>
-                          <div class="form-group">
-                              <label for="keterangan">Keterangan</label>
-                              <textarea name="keterangan" id="" cols="30" rows="10" class="form-control @error('keterangan') {{ 'is-invalid' }} @enderror" placeholder="Masukkan keterangan kelas">{{old('keterangan') ?? $kelas->keterangan ?? ''}}</textarea>
-                             
-                              @error('keterangan')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-    
-                        </div>
-                            <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
-                          <input type="submit" value="{{$button}}" class="btn btn-md btn-info">
-                        </form>
+                              <p>{{$kelas->nama}}</p>
+                          </div>
+                        <div class="form-group">
+                            <label for="keterangan">Keterangan</label>
+                           
+                            <p>{{$kelas->keterangan}}</p>
+                      </div>
+                          <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Siswa Dalam Kelas</h5>
+                        <hr>
+                      @if(count($data_siswa) > 0)  
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nama Siswa</th>
+                                    <th scope="col">Jenis Kelamin</th>
+                                    <th scope="col">Nomor Handphone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($data_siswa as $siswa)
+                                <tr>
+                                    <td>{{$siswa->nama}}</td>
+                                    <td>{{trans(ucfirst($siswa->jenis_kelamin))}}</td>
+                                    <td>{{$siswa->nomor_hp}}</td>
+                                </tr>
+                               
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <th colspan="2"><strong>Total Siswa</strong></th>
+                                <td><strong>{{$data_siswa->count()}}</strong></td>
+                            </tfoot>
+                        </table>
+                        @else
+                            <h2 class="p-3 text-center">Data Siswa Dalam Kelas Kosong</h2>
+                        @endif
                     </div>
                 </div>
             </div>

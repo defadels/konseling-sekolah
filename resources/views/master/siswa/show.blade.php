@@ -1,6 +1,6 @@
 @extends('layout.master_layout')
 
-@section('title', 'Form Data Guru')
+@section('title', 'Lihat Data Siswa')
 
 @section('content')
 
@@ -41,288 +41,71 @@
                     <div class="card-body">
                         <h4 class="card-title">File export</h4>
                         <hr>
-                        @if(isset($siswa))
-
-                        {!! Form::model($siswa, ['route' => [$url, $siswa->id],'method' => 'PUT']) !!}
-    
-                        <div class="form-group">
-                            {!! Form::label('nis', 'NIS') !!}
-                            {!! Form::text('nis', old('nis'), ['class' => 'form-control','placeholder' => 'Masukkan NIS siswa']) !!}
-                             
-                            @error('nis')
-                            <span class="text-danger">
-                                {{$message}}
-                            </span>
-                            @enderror
-    
-                          </div>
-    
-                        <div class="form-group">
-                            <label for="nama">Nama Siswa</label>
-                            {!! Form::label('nama', 'Nama Siswa') !!}
-                            {!! Form::text('nama', old('nama'), ['class' => 'form-control', 'placeholder' => 'Masukkan nama siswa']) !!}
                         
-                            @error('nama')
-                            <span class="text-danger">
-                                {{$message}}
-                            </span>
-                            @enderror
-                          </div>
-    
-                          <div class="form-group">
-                              {!! Form::label('tempat_lahir', 'Tempat Lahir') !!}
-                              {!! Form::text('tempat_lahir', old('tempat_lahir'), ['class' => 'form-control', 'placeholder' => 'Masukkan tempat lahir']) !!}
-                          
-                              @error('tempat_lahir')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-    
-                            </div>
-                          
-                            <div class="form-group">
-                              <label for="tanggal_lahir">Tanggal Lahir</label>
-                              {!! Form::label('tanggal_lahir','Tanggal Lahir') !!}
-                              {!! Form::date('tanggal_lahir', old('tanggal_lahir'), ['class' => 'form-control']) !!}
-                          
-                              @error('tanggal_lahir')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-                            </div>
-                          
-    
                         <div class="form-group">
-                          {!! Form::label('jenis_kelamin', 'Jenis Kelamin') !!}
-                          {!! Form::select('jenis_kelamin', $jenis_kelamin, old('jenis_kelamin'), ['class' => 'form-control', 'placeholder' => '--Pilih jenis kelamin--']) !!}
-                           
-                            @error('jenis_kelamin')
-                            <span class="text-danger">
-                                {{$message}}
-                            </span>
-                            @enderror
-                          </div>
-    
-                          <div class="form-group">
-                              {!! Form::label('agama', 'Agama') !!}
-                              {!! Form::select('agama', $daftar_agama, old('agama'), ['placeholder' => 'Pilih agama','class' => 'form-control']) !!}
-                            
-                              @error('agama')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-                            </div>
-    
-                            <div class="form-group">
-                              <label for="nomor_hp">Nomor Telepon</label>
-                              {!! Form::label('nomor_hp','Nomor Telepon') !!}
-                              {!! Form::text('nomor_hp', old('nomor_hp'), ['class' => 'form-control', 'placeholder'=>'Masukkan nomor telepon']) !!}
-                              
-                              @error('nomor_hp')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-                            </div>
-    
-                          <div class="form-group">
-                            {!! Form::label('email', 'Email') !!}
-    
-                            {!! Form::email('email', old('email'), ['class' => 'form-control' , 'placeholder' => 'Masukkan email siswa']) !!}
-                               
-                              @error('email')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-    
-                            </div>
-    
-                            <div class="form-group">
-                                {!! Form::label('password', 'Password') !!}
-    
-                                {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Ketik jika ingin diubah']) !!}
-                               
-                              @error('password')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-    
-                            </div>
-    
-                            <div class="form-group">
-                              {!! Form::label('kelas_id', 'Kelas') !!}
-    
-                              {!! Form::select('kelas_id', $daftar_kelas, old('kelas_id'), ['placeholder' => '--Pilih kelas--', 'class' => 'form-control']) !!}
-                              
-                              @error('kelas_id')
-                              <span class="text-danger">
-                                  {{$message}}
-                              </span>
-                              @enderror
-                            </div>
-    
-                        <div class="form-group">
-                            {!! Form::label('alamat', 'Alamat') !!}
-                            {!! Form::textarea('alamat', old('alamat'), ['class' => 'form-control']) !!}
-                            
-                            @error('alamat')
-                            <span class="text-danger">
-                                {{$message}}
-                            </span>
-                            @enderror
-                            
+                          {!! Form::label('nis', 'NIS') !!}
+                          <p>{{$siswa->nis}}</p>
+  
                         </div>
+  
+                      <div class="form-group">
+                          {!! Form::label('nama', 'Nama Siswa') !!}
+                          <p>{{$siswa->nama}}</p>
+  
+                        </div>
+  
+                        <div class="form-group">
+                            {!! Form::label('tempat_lahir', 'Tempat Lahir') !!}
+                            <p>{{$siswa->tempat_lahir}}</p>
+  
+                          </div>
                         
-                            <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
-                          <input type="submit" value="{{$button}}" class="btn btn-md btn-info">
+                          <div class="form-group">
+                            <label for="tanggal_lahir">Tanggal Lahir</label>
+                            {!! Form::label('tanggal_lahir','Tanggal Lahir') !!}
+                            <p>{{$siswa->tanggal_lahir}}</p>
+                          </div>
+                        
+  
+                      <div class="form-group">
+                        {!! Form::label('jenis_kelamin', 'Jenis Kelamin') !!}
+                        <p>{{$siswa->jenis_kelamin}}</p>
+                        </div>
+  
+                        <div class="form-group">
+                            {!! Form::label('agama', 'Agama') !!}
+                            <p>{{$siswa->agama}}</p>
+                          </div>
+  
+                          <div class="form-group">
+                            <label for="nomor_hp">Nomor Telepon</label>
+                            {!! Form::label('nomor_hp','Nomor Telepon') !!}
+                            <p>{{$siswa->nomor_hp}}</p>
+                          </div>
+  
+                        <div class="form-group">
+                          {!! Form::label('email', 'Email') !!}
+  
+                          <p>{{$siswa->email}}</p>
+  
+  
+                          </div>
+  
+                          <div class="form-group">
+                            {!! Form::label('kelas_id', 'Kelas') !!}
+  
+                            <p>{{$siswa->pilihan_kelas->nama}}</p>
+  
+                          </div>
+  
+                      <div class="form-group">
+                          {!! Form::label('alamat', 'Alamat') !!}
+                          <p>{{$siswa->alamat}}</p>
+                      
                           
-                          {!! Form::close() !!}
-    
-                        @else
-    
-                        {!! Form::open(['route' => $url]) !!}
-                            <div class="form-group">
-                                {!! Form::label('nis', 'NIS') !!}
-                                {!! Form::text('nis', old('nis'),['class' => 'form-control','placeholder' => 'Masukkan NIS siswa','maxlength' => '12']) !!}
-                                 
-                                @error('nis')
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                @enderror
-        
-                              </div>
-        
-                            <div class="form-group">
-                                <label for="nama">Nama Siswa</label>
-                                {!! Form::label('nama', 'Nama Siswa') !!}
-                                {!! Form::text('nama', old('nama'),['class' => 'form-control', 'placeholder' => 'Masukkan nama siswa']) !!}
-                            
-                                @error('nama')
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                @enderror
-                              </div>
-        
-                              <div class="form-group">
-                                  {!! Form::label('tempat_lahir', 'Tempat Lahir') !!}
-                                  {!! Form::text('tempat_lahir', old('tempat_lahir'), ['class' => 'form-control','placeholder' => 'Masukkan tempat lahir']) !!}
-                              
-                                  @error('tempat_lahir')
-                                  <span class="text-danger">
-                                      {{$message}}
-                                  </span>
-                                  @enderror
-        
-                                </div>
-                              
-                                <div class="form-group">
-                                  <label for="tanggal_lahir">Tanggal Lahir</label>
-                                  {!! Form::label('tanggal_lahir','Tanggal Lahir') !!}
-                                  {!! Form::date('tanggal_lahir',old('tanggal_lahir'),['class' => 'form-control']) !!}
-                              
-                                  @error('tanggal_lahir')
-                                  <span class="text-danger">
-                                      {{$message}}
-                                  </span>
-                                  @enderror
-                                </div>
-                              
-        
-                            <div class="form-group">
-                              {!! Form::label('jenis_kelamin', 'Jenis Kelamin') !!}
-                              {!! Form::select('jenis_kelamin', $jenis_kelamin, old('jenis_kelamin'),['class'=> 'form-control','placeholder' => '--Pilih jenis kelamin--']) !!}
-                               
-                                @error('jenis_kelamin')
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                @enderror
-                              </div>
-        
-                              <div class="form-group">
-                                  {!! Form::label('agama', 'Agama') !!}
-                                  {!! Form::select('agama', $daftar_agama, old('agama'), ['placeholder' => 'Pilih agama','class' => 'form-control']) !!}
-                                
-                                  @error('agama')
-                                  <span class="text-danger">
-                                      {{$message}}
-                                  </span>
-                                  @enderror
-                                </div>
-        
-                                <div class="form-group">
-                                  <label for="nomor_hp">Nomor Telepon</label>
-                                  {!! Form::label('nomor_hp','Nomor Telepon') !!}
-                                  {!! Form::text('nomor_hp',old('nomor_hp'),['class' => 'form-control','placeholder'=>'Masukkan nomor telepon']) !!}
-                                  
-                                  @error('nomor_hp')
-                                  <span class="text-danger">
-                                      {{$message}}
-                                  </span>
-                                  @enderror
-                                </div>
-        
-                              <div class="form-group">
-                                {!! Form::label('email', 'Email') !!}
-        
-                                {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
-                                   
-                                  @error('email')
-                                  <span class="text-danger">
-                                      {{$message}}
-                                  </span>
-                                  @enderror
-        
-                                </div>
-        
-                                <div class="form-group">
-                                    {!! Form::label('password', 'Password') !!}
-        
-                                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Ketik jika ingin diubah']) !!}
-                                   
-                                  @error('password')
-                                  <span class="text-danger">
-                                      {{$message}}
-                                  </span>
-                                  @enderror
-        
-                                </div>
-        
-                                <div class="form-group">
-                                  {!! Form::label('kelas_id', 'Kelas') !!}
-        
-                                  {!! Form::select('kelas_id', $daftar_kelas, old('kelas_id'), ['placeholder' => '--Pilih kelas--', 'class' => 'form-control']) !!}
-                                  
-                                  @error('kelas_id')
-                                  <span class="text-danger">
-                                      {{$message}}
-                                  </span>
-                                  @enderror
-                                </div>
-        
-                            <div class="form-group">
-                                {!! Form::label('alamat', 'Alamat') !!}
-                                {!! Form::textarea('alamat', old('alamat'), ['class' => 'form-control']) !!}
-                                
-                                @error('alamat')
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                @enderror
-                            
-                                <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
-                              <input type="submit" value="{{$button}}" class="btn btn-md btn-info">
-                     
-                              {!! Form::close() !!}
-                       
-                        @endif 
+                      </div>
+                      
+                          <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
     
                     </div>
                        

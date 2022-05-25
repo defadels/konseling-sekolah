@@ -1,6 +1,6 @@
 @extends('layout.master_layout')
 
-@section('title', 'Form Data Guru')
+@section('title', 'Form Data Siswa')
 
 @section('content')
 
@@ -39,7 +39,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">File export</h4>
+                        <h4 class="card-title">Form Data Siswa</h4>
                         <hr>
                         @if(isset($siswa))
 

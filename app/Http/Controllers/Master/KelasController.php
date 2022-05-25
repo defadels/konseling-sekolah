@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Kelas;
+use Validator;
+use App\User;
 
 class KelasController extends Controller
 {
@@ -14,7 +17,8 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('master.kelas.index');
+        $daftar_kelas = Kelas::get();
+        return view('master.kelas.index',compact('daftar_kelas'));
     }
 
     /**
@@ -39,7 +43,27 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $rules = [
+            'nama' => 'required',
+            'keterangan' => 'max:300'
+        ];
+
+        $message = [
+            'nama.required' => 'Nama kelas harus diisi',
+            'keterangan.max' => 'Keterangan batas maksimal 300 karakter'
+        ];
+
+        $validates = Validator::make($input,$rules,$message)->validate();
+
+        $kelas = Kelas::create([
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan
+        ]);
+
+        return redirect()->route('master.kelas')
+        ->with('message',__('pesan.create',['module'=>$kelas->nama]));
     }
 
     /**
@@ -48,9 +72,10 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Kelas $kelas)
     {
-        //
+        $data_siswa = User::where('kelas_id',$kelas->id)->get();
+        return view('master.kelas.show',compact('kelas','data_siswa'));
     }
 
     /**
@@ -59,9 +84,13 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Kelas $kelas)
     {
-        //
+        $url = 'master.kelas.update';
+
+        $button = "Update";
+
+        return view('master.kelas.form',compact('url','button','kelas'));
     }
 
     /**
@@ -71,9 +100,28 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Kelas $kelas) {
+        $input = $request->all();
+
+        $rules = [
+            'nama' => 'required',
+            'keterangan' => 'max:300'
+        ];
+
+        $message = [
+            'nama.required' => 'Nama kelas harus diisi',
+            'keterangan.max' => 'Keterangan batas maksimal 300 karakter'
+        ];
+
+        $validates = Validator::make($input,$rules,$message)->validate();
+
+        $kelas->nama = $request->nama;
+        $kelas->keterangan = $request->keterangan;
+
+        $kelas->save();
+
+        return redirect()->route('master.kelas')
+        ->with('message',__('pesan.update',['module' => $kelas->nama]));
     }
 
     /**
@@ -82,8 +130,17 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kelas $kelas)
     {
-        //
+        try{
+            $nama = $kelas->nama;
+
+            $kelas->delete();
+        }catch(Exception $e){
+            return redirect()->route('master.kelas')
+            ->with('error',__('pesan.error',['module'=>$nama]));
+        }
+        return redirect()->route('master.kelas')
+        ->with('message',__('pesan.delete',['module'=>$nama]));
     }
 }

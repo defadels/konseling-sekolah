@@ -41,86 +41,38 @@
                     <div class="card-body">
                         <h4 class="card-title">File export</h4>
                         <hr>
-                  <form action="{{route($url, $guru->id ?? '')}}" method="post">
-                      @csrf
+                        <div class="form-group">
+                            <label for="nip">NIP</label>
+                            <p>{{$guru->nip}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama">Nama Guru</label>
+                        
+                            <p>{{$guru->nama}}</p>
+                        </div>    
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            
+                            <p>{{$guru->email}}</p>
+                        </div>
 
-                      @if(isset($guru))
-                      @method('put')
-                      @endif
-                    <div class="form-group">
-                        <label for="nip">NIP</label>
-                        <input type="text" value="{{old('nip') ?? $guru->nip ?? ''}}" name="nip" id="nio" maxlength="8" class="form-control @error('nip'){{'is-invalid'}}@enderror" placeholder="Masukkan NIP guru">
-                        <small>*Kosongkan jika tidak ada NIP</small>
-
-                        @error('nip')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="nama">Nama Guru</label>
-                        <input type="text" value="{{old('nama') ?? $guru->nama ?? ''}}" name="nama" id="nama" class="form-control @error('nama'){{'is-invalid'}}@enderror" placeholder="Masukkan nama guru">
-
-                        @error('nama')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" value="{{old('email') ?? $guru->email ?? ''}}" name="email" id="" class="form-control @error('email'){{'is-invalid'}}@enderror" placeholder="Masukkan email guru">
-
-                        @error('email')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" @if(isset($guru))placeholder="Ketik jika ingin diubah"@endif name="password" id="" class="form-control @error('password'){{'is-invalid'}}@enderror" placeholder="Masukkan password guru">
-
-                        @error('password')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="mapel">Mata Pelajaran</label>
-                        <input type="text" value="{{old('mapel') ?? $guru->mapel ?? ''}}" name="mapel" id="" class="form-control @error('mapel'){{'is-invalid'}}@enderror" placeholder="Masukkan mata pelajaran guru">
-
-                        @error('mapel')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="nomor_hp">Nomor Telepon</label>
-                        <input type="text" value="{{old('nomor_hp') ?? $guru->nomor_hp ?? ''}}" name="nomor_hp" id="" class="form-control @error('nomor_hp'){{'is-invalid'}}@enderror" placeholder="Masukkan nomor handphone">
-
-                        @error('nomor_hp')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <textarea name="alamat" id="" cols="30" rows="10" class="form-control @error('alamat'){{'is-invalid'}}@enderror" placeholder="Masukkan alamat lengkap">{{old('alamat') ?? $guru->alamat ?? ''}}</textarea>
-
-                        @error('alamat')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                    </div>
-                    <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
-                    <input type="submit" value="{{$button}}" class="btn btn-md btn-info">
-                  </form>
+                        <div class="form-group">
+                            <label for="mapel">Mata Pelajaran</label>
+                            
+                            <p>{{$guru->mapel}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomor_hp">Nomor Telepon</label>
+                            
+                            <p>{{$guru->nomor_hp}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            
+                            <p>{{$guru->alamat}}</p>
+                        </div>
+                    
+                        <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
                        
                     </div>
                 </div>
