@@ -353,6 +353,8 @@
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     <script src="{{asset('materialpro/dist/js/pages/datatable/datatable-advanced.init.js')}}"></script>
+
+    @yield('page_script')
 </body>
 
 </html>

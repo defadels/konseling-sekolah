@@ -26,32 +26,26 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="{{route('master.dashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                    href="{{route('siswa.dashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                         class="hide-menu">Dashboard</span></a></li>
                         
                 <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i>
-                    <span class="hide-menu">Data User</span></li>
+                    <span class="hide-menu">Bimbingan Konseling</span></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{route('master.guru')}}" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
-                            class="hide-menu">Data Guru</span></a></li>
+                        href="{{route('siswa.bimbingan.pribadi')}}" aria-expanded="false"><i class="mdi mdi-account"></i><span
+                            class="hide-menu">Pribadi</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{route('master.siswa')}}" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
-                            class="hide-menu">Data Siswa</span></a></li>
+                        href="{{route('siswa.bimbingan.karir')}}" aria-expanded="false"><i class="mdi mdi-worker"></i><span
+                            class="hide-menu">Karir</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{route('master.kelas')}}" aria-expanded="false"><i class="mdi mdi-archive"></i><span
-                            class="hide-menu">Data Kelas</span></a></li>
+                        href="{{route('siswa.bimbingan.kelompok')}}" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
+                            class="hide-menu">Kelompok</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="{{route('siswa.bimbingan.konseling.kelompok')}}" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
+                            class="hide-menu">BK Kelompok</span></a></li>
                 
 
-                <li class="nav-small-cap">
-                    <i class="mdi mdi-dots-horizontal"></i>
-                    <span class="hide-menu">Bimbingan Konseling</span>
-                </li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="{{route('master.bimbingan.masuk')}}" aria-expanded="false"><i class="mdi mdi-arrow-down-bold"></i><span
-                        class="hide-menu">BK Masuk</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="{{route('master.bimbingan.ditanggapi')}}" aria-expanded="false"><i class="mdi mdi-check-all"></i><span
-                        class="hide-menu">BK Ditanggapi</span></a></li>        
+                      
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
