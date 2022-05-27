@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('table', 'TableController@table')->name('table');
 
+Route::get('pintudepan', 'Auth\MasterRegisterController@showRegistrationForm')->name('pintudepan');
+Route::post('pintudepan', 'Auth\MasterRegisterController@create')->name('pintudepan.create');
 
-Route::prefix('master')->name('master.')->namespace('Master')->group(function(){
+Route::prefix('master')->name('master.')->middleware('auth','tolakselainmaster')->namespace('Master')->group(function(){
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
     Route::get('profile/{profile}','ProfileController@show')->name('profile');
@@ -60,7 +62,7 @@ Route::prefix('master')->name('master.')->namespace('Master')->group(function(){
     Route::get('bimbingan-konseling/ditanggapi/lihat/{bk}', 'BKDitanggapiController@show')->name('bimbingan.ditanggapi.show');
 });
 
-Route::prefix('guru')->name('guru.')->namespace('Guru')->group(function(){
+Route::prefix('guru')->name('guru.')->middleware('auth','tolakselainguru')->namespace('Guru')->group(function(){
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
     Route::get('profile/{profile}','ProfileController@show')->name('profile');
@@ -85,7 +87,7 @@ Route::prefix('guru')->name('guru.')->namespace('Guru')->group(function(){
     Route::get('bimbingan-konseling/ditanggapi/lihat/{bk}', 'BKDitanggapiController@show')->name('bimbingan.ditanggapi.show');
 });
 
-Route::prefix('siswa')->name('siswa.')->namespace('Siswa')->group(function(){
+Route::prefix('siswa')->name('siswa.')->middleware('auth','tolakselainsiswa')->namespace('Siswa')->group(function(){
     Route::get('/','DashboardController@index')->name('dashboard');
 
     Route::get('profile/{profile}','ProfileController@show')->name('profile');

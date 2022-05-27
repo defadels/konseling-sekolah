@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
-use App\Kelas;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+class MasterRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -44,27 +45,14 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $daftar_kelas = Kelas::pluck('nama','id');
-
-        return view('auth.register',compact('daftar_kelas'));
+        return view('auth.master-register');
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'nis' => ['max:20','unique:users,nis'],
-            'nama' => ['required', 'string', 'max:255'],
-            'tempat_lahir' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -72,17 +60,39 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    public function create(Request $request)
     {
-        return User::create([
-            'nis' => $data['nis'],
-            'nama' => $data['nama'],
-            'tempat_lahir' => $data['tempat_lahir'],
-            'tanggal_lahir' => $data['tanggal_lahir'],
-            'kelas_id' => $data['kelas_id'],
-            'email' => $data['email'],
-            'jenis' => 'siswa',
-            'password' => Hash::make($data['password']),
-        ]);
+        $input = $request->all();
+
+        $rules = [
+            'nip' => ['nullable','max:12', 'unique:users'],
+            'nama' => ['required', 'string', 'max:255'],
+            'email' => ['required',  'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed'],
+        ];
+
+        $validate = Validator::make($input, $rules)->validate();
+
+     $user = new User;
+
+     $user->nip = $request['nip'];
+     $user->nama = $request['nama'];
+     $user->email = $request['email'];
+     $user->password = Hash::make($request['password']);
+     $user->jenis = 'master';
+     $user->save();
+
+
+     $data = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+     ]);
+
+      if(Auth::attempt($data)){
+          $request->session()->regenerate();
+          
+          return redirect()->route('home');
+      }  
+            return redirect()->route('pintudepan');
     }
 }

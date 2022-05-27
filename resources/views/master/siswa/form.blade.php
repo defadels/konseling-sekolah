@@ -58,7 +58,6 @@
                           </div>
     
                         <div class="form-group">
-                            <label for="nama">Nama Siswa</label>
                             {!! Form::label('nama', 'Nama Siswa') !!}
                             {!! Form::text('nama', old('nama'), ['class' => 'form-control', 'placeholder' => 'Masukkan nama siswa']) !!}
                         
@@ -82,7 +81,6 @@
                             </div>
                           
                             <div class="form-group">
-                              <label for="tanggal_lahir">Tanggal Lahir</label>
                               {!! Form::label('tanggal_lahir','Tanggal Lahir') !!}
                               {!! Form::date('tanggal_lahir', old('tanggal_lahir'), ['class' => 'form-control']) !!}
                           
@@ -117,7 +115,6 @@
                             </div>
     
                             <div class="form-group">
-                              <label for="nomor_hp">Nomor Telepon</label>
                               {!! Form::label('nomor_hp','Nomor Telepon') !!}
                               {!! Form::text('nomor_hp', old('nomor_hp'), ['class' => 'form-control', 'placeholder'=>'Masukkan nomor telepon']) !!}
                               
