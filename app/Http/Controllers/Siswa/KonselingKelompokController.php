@@ -38,7 +38,9 @@ class KonselingKelompokController extends Controller
 
         $url = 'siswa.bimbingan.konseling.kelompok.store';
 
-        return view('siswa.bimbingan.konseling_kelompok.form',compact('button','url'));
+        $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
+
+        return view('siswa.bimbingan.konseling_kelompok.form',compact('button','url','daftar_guru'));
     }
 
     /**
@@ -76,6 +78,7 @@ class KonselingKelompokController extends Controller
         $data_bk->status = 'Belum Ditanggapi';
         $data_bk->jenis = 'Bimbingan Konseling Kelompok';
         $data_bk->dibuat_oleh_id = Auth::user()->id;
+        $data_bk->kepada_guru_id = $request->kepada_guru_id;
         $data_bk->save();
 
         

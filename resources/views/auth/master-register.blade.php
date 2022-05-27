@@ -15,7 +15,7 @@
                             <label for="nip" class="col-md-4 col-form-label text-md-right">{{ __('NIP') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nip" type="text" class="form-control @error('nip') is-invalid @enderror" name="nip" value="{{ old('nip') }}" required autocomplete="nip" autofocus>
+                                <input id="nip" type="text" class="form-control @error('nip') is-invalid @enderror" name="nip" value="{{ old('nip') }}" maxlength="12" required autocomplete="nip" autofocus>
 
                                 @error('nip')
                                     <span class="invalid-feedback" role="alert">

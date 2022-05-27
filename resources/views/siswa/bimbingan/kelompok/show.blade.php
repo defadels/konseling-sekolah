@@ -1,5 +1,7 @@
 @extends('layout.siswa_layout')
 
+@section('title','Lihat Konseling Kelompok')
+
 @section('content')
 
     <!-- ============================================================== -->
@@ -54,6 +56,8 @@
                                     </div>
                                 </div>
                                 
+
+                              @if($daftar_siswa > 1)  
                                 <div class="row mb-3">
                                     <div class="col-lg-12">
                                         <p><strong>Daftar Nama Siswa</strong></p>
@@ -64,7 +68,8 @@
                                         </ol>
                                     </div>
                                 </div>
-                                
+                              @endif
+
                                 <div class="form-group">
                                     <label for="judul_bk">Judul</label>
                                    

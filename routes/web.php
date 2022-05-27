@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('table', 'TableController@table')->name('table');
 
@@ -115,5 +115,5 @@ Route::prefix('siswa')->name('siswa.')->middleware('auth','tolakselainsiswa')->n
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 

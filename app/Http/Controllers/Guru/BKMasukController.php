@@ -21,7 +21,9 @@ class BKMasukController extends Controller
      */
     public function index()
     {
-        $data_bk = LayananBK::where('status','Belum Ditanggapi')->get();
+        $id = Auth::user()->id;
+        $data_bk = LayananBK::where('kepada_guru_id',Auth::user()->id)->where('status','Belum Ditanggapi')->get();
+  
 
         return view('guru.bimbingan.masuk.index',compact('data_bk'));
     }
@@ -103,7 +105,6 @@ class BKMasukController extends Controller
         $bk->judul_tanggapan = $request->judul_tanggapan;
         $bk->tanggapan = $request->tanggapan;
         $bk->status = 'Sudah Ditanggapi';
-        $bk->tanggapan_guru_id = Auth::user()->id;
 
         $bk->save();
 

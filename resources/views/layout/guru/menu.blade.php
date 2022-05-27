@@ -1,12 +1,20 @@
+@php
+
+use App\LayananBK;
+
+$bk_masuk = LayananBK::where('kepada_guru_id',Auth::user()->id)->where('status','Belum Ditanggapi')->get();
+
+@endphp
+
 <aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
         <!-- User profile -->
-        <div class="user-profile position-relative" style="background: url(materialpro/assets/images/background/user-info.jpg) no-repeat;">
+        <div class="user-profile position-relative" style="background: url({{asset('materialpro/assets/images/background/user-info.jpg')}}) no-repeat;">
             <!-- User profile image -->
-            <div class="profile-img"> <img src="{{asset('materialpro/assets/images/users/profile.png')}}" alt="user" class="w-100" /> </div>
+            <div class="profile-img"> <img src="{{asset('materialpro/assets/images/users/avatar.webp')}}" alt="user" class="w-100 rounded-circle" /> </div>
             <!-- User profile text-->
-            <div class="profile-text pt-1"> 
+            {{-- <div class="profile-text pt-1"> 
                 <a href="#" class="dropdown-toggle u-dropdown w-100 text-white d-block position-relative" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe</a>
                 <div class="dropdown-menu animated flipInY"> 
                     <a href="#" class="dropdown-item"><i class="ti-user"></i>
@@ -19,7 +27,7 @@
                     <div class="dropdown-divider"></div> 
                     <a href="authentication-login1.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- End User profile text-->
         <!-- Sidebar navigation-->
@@ -48,7 +56,7 @@
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                     href="{{route('guru.bimbingan.masuk')}}" aria-expanded="false"><i class="mdi mdi-arrow-down-bold"></i><span
-                        class="hide-menu">BK Masuk</span></a></li>
+                        class="hide-menu">BK Masuk@if(count($bk_masuk) > 0) <button class="btn btn-sm btn-info btn-rounded ml-3">{{$bk_masuk->count()}}</button> @endif</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                     href="{{route('guru.bimbingan.ditanggapi')}}" aria-expanded="false"><i class="mdi mdi-check-all"></i><span
                         class="hide-menu">BK Ditanggapi</span></a></li>        

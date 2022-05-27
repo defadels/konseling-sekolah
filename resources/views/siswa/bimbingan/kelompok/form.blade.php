@@ -1,5 +1,7 @@
 @extends('layout.siswa_layout')
 
+@section('title','Konseling Kelompok')
+
 @section('content')
 
     <!-- ============================================================== -->
@@ -43,7 +45,11 @@
                         <form action="{{route($url)}}" method="post" enctype="multipart/form-data">
                             @csrf
                         
-                                
+                            <div class="form-group">
+                                {!! Form::label('kepada_guru_id', 'Ajukan Kepada Guru :') !!}
+
+                                {!! Form::select('kepada_guru_id', $daftar_guru, old('kepada_guru_id'), ['placeholder' => '--Pilih guru--', 'class' => 'form-control']) !!}
+                            </div> 
                             
                                 <div class="table-respnsive">
                                     <table class="table" id="tabel_pesanan">
@@ -100,8 +106,6 @@
 
 @section('page_script')
     <script>		
-		$('.select2').select2();
-
 		$('thead').on('click', '#addRow', function(){
 			var tr = "<tr>"
 						+"<td><input type='text' name='nama_siswa[]' class='form-control' value='''></td>"

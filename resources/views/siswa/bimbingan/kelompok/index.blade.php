@@ -18,7 +18,7 @@
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                        <a href="{{route('siswa.bimbingan.karir.create')}}" class="btn btn-primary">+ Tambah Data</a>
+                        <a href="{{route('siswa.bimbingan.kelompok.create')}}" class="btn btn-primary">+ Tambah Data</a>
                     </div>
                 
                 </div>

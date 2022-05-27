@@ -1,5 +1,7 @@
 @extends('layout.master_layout')
 
+@section('title','Laporan Bimbingan Konseling')
+
 @section('content')
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->

@@ -48,6 +48,13 @@
                                 <label for="">Dibuat Oleh</label>
                                 <p>{{Auth::user()->nama}} - [Kelas {{Auth::user()->pilihan_kelas->nama}}]</p>
                             </div>
+
+                            <div class="form-group">
+                                {!! Form::label('kepada_guru_id', 'Ajukan Kepada Guru :') !!}
+
+                                {!! Form::select('kepada_guru_id', $daftar_guru, old('kepada_guru_id'), ['placeholder' => '--Pilih guru--', 'class' => 'form-control']) !!}
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="judul_bk">Judul</label>
                                 <input type="text" name="judul_bk" id="judul_bk" class="form-control @error('judul_bk') {{'is-invalid'}} @enderror" placeholder="Judul bimbingan">

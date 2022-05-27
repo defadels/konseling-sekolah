@@ -1,6 +1,6 @@
 @extends('layout.siswa_layout')
 
-@section('title','Data BK Kelompok<')
+@section('title','Data BK Kelompok')
 
 @section('content')
     <!-- ============================================================== -->
@@ -8,7 +8,7 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 col-12 align-self-center">
-            <h3 class="text-themecolor mb-0">Data BK Kelompok<</h3>
+            <h3 class="text-themecolor mb-0">Data BK Kelompok</h3>
             <ol class="breadcrumb mb-0 p-0 bg-transparent">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                 <li class="breadcrumb-item active">BK Kelompok<</li>
@@ -18,7 +18,7 @@
             <div class="d-flex mt-2 justify-content-end">
                 <div class="d-flex mr-3 ml-2">
                     <div class="chart-text mr-2">
-                        <a href="{{route('siswa.bimbingan.karir.create')}}" class="btn btn-primary">+ Tambah Data</a>
+                        <a href="{{route('siswa.bimbingan.konseling.kelompok.create')}}" class="btn btn-primary">+ Tambah Data</a>
                     </div>
                 
                 </div>

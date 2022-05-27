@@ -1,5 +1,7 @@
 @extends('layout.siswa_layout')
 
+@section('title','Lihat BK Karir')
+
 @section('content')
 
     <!-- ============================================================== -->

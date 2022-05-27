@@ -16,8 +16,8 @@ class RedirectIfNotSiswa
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->jenis == 'siswa'){
-            return redirect()->route('login');
+        if(Auth::user()->jenis != 'siswa'){
+            return redirect()->route('home');
     }
         return $next($request);
     }

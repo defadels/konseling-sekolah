@@ -16,8 +16,8 @@ class RedirectIfNotMaster
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->jenis == 'master'){
-                return redirect()->route('login');
+        if(Auth::user()->jenis != 'master'){
+                return redirect()->route('home');
         }
         return $next($request);
     }

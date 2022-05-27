@@ -16,8 +16,8 @@ class RedirectIfNotGuru
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->jenis == 'guru'){
-            return redirect()->route('login');
+        if(Auth::user()->jenis != 'guru'){
+            return redirect()->route('home');
         }
         return $next($request);
     }

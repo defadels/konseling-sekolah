@@ -39,7 +39,9 @@ class BKPribadiController extends Controller
 
         $url = 'siswa.bimbingan.pribadi.store';
 
-        return view('siswa.bimbingan.pribadi.form',compact('button','url'));
+        $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
+
+        return view('siswa.bimbingan.pribadi.form',compact('button','url','daftar_guru'));
     }
 
     /**
@@ -74,6 +76,7 @@ class BKPribadiController extends Controller
         $data_bk->nomor_bk = $request->nomor_bk = $nomorBK;
         $data_bk->pokok_pembahasan = $request->pokok_pembahasan;
         $data_bk->dibuat_oleh_id = Auth::user()->id;
+        $data_bk->kepada_guru_id = $request->kepada_guru_id;
         $data_bk->status = 'Belum Ditanggapi';
         $data_bk->jenis = 'Konseling Pribadi';
         $data_bk->save();

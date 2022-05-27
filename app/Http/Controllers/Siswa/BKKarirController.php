@@ -39,7 +39,9 @@ class BKKarirController extends Controller
 
         $url = 'siswa.bimbingan.karir.store';
 
-        return view('siswa.bimbingan.karir.form',compact('button','url'));
+        $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
+
+        return view('siswa.bimbingan.karir.form',compact('button','url','daftar_guru'));
     }
 
     /**
@@ -73,6 +75,7 @@ class BKKarirController extends Controller
         $data_bk->nomor_bk = $request->nomor_bk = $nomorBK;
         $data_bk->pokok_pembahasan = $request->pokok_pembahasan;
         $data_bk->dibuat_oleh_id = Auth::user()->id;
+        $data_bk->kepada_guru_id = $request->kepada_guru_id;
         $data_bk->status = 'Belum Ditanggapi';
         $data_bk->jenis = 'Bimbingan Konseling Karir';
         $data_bk->save();
