@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use App\LayananBK;
+use App\BKSiswa;
+use App\Kelas;
 
 class LaporanController extends Controller
 {
@@ -14,7 +18,8 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        return view('master.laporan');
+        $daftar_siswa = LayananBK::get();
+        return view('master.laporan',compact('daftar_siswa'));
     }
 
     /**

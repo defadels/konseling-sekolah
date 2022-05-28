@@ -42,45 +42,56 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">File export</h4>
-                        <h6 class="card-subtitle">Exporting data from a table can often be a key part of a
+                        <h5 class="card-title">Tabel Data BK Siswa</h5>
+                        {{-- <h6 class="card-subtitle">Exporting data from a table can often be a key part of a
                             complex application. The Buttons extension for DataTables provides three plug-ins
                             that provide overlapping functionality for data export. You can refer full
-                            documentation from here <a href="https://datatables.net/">Datatables</a></h6>
+                            documentation from here <a href="https://datatables.net/">Datatables</a></h6> --}}
                         <div class="table-responsive">
+                            @if(count($daftar_siswa)>0)  
                             <table id="file_export" class="table table-striped table-bordered display">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>No.</th>
+                                    <th>Nomor BK</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Kelas</th>
+                                    <th>Jenis</th>
+                                    <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    
+                                    <?php
+                                    $no = 1;
+                                ?>
+                                @foreach($daftar_siswa as $siswa)
+                                <tr>
+                                    <td>{{$no++}}</td>
+                                    <td>{{$siswa->nomor_bk}}</td>
+                                    <td>{{$siswa->dibuat_oleh->nama}}</td>
+                                    <td>{{$siswa->dibuat_oleh->pilihan_kelas->nama}}</td>
+                                    <td>{{ucfirst(trans($siswa->jenis))}}</td>
+                                    <td>{{$siswa->status}}</td>
+                              
+                                </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>No.</th>
+                                        <th>Nomor BK</th>
+                                        <th>Nama Siswa</th>
+                                        <th>Kelas</th>
+                                        <th>Jenis</th>
+                                        <th>Status</th>
                                     </tr>
                                 </tfoot>
                             </table>
+
+                            @else 
+                            <h2 class="text-center p-3">Data Bimbingan Konseling Kosong</h2>
+                           @endif 
+
                         </div>
                     </div>
                 </div>
