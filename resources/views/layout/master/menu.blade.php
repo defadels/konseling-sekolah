@@ -59,7 +59,7 @@ $bk_masuk = LayananBK::where('kepada_guru_id',Auth::user()->id)->where('status',
                         class="hide-menu">Laporan</span></a></li>
                 <li class="sidebar-item">  <a class="sidebar-link waves-effect waves-dark sidebar-link"
                     href="{{route('master.bimbingan.masuk')}}" aria-expanded="false"><i class="mdi mdi-arrow-down-bold"></i><span
-                        class="hide-menu">BK Masuk @if(count($bk_masuk) > 0) <button class="btn btn-sm btn-info btn-rounded ml-3">{{$bk_masuk->count()}}</button> @endif </span> </a> </li> 
+                        class="hide-menu">BK Masuk @if(count($bk_masuk) > 0) <button class="btn btn-sm btn-info ml-3">{{$bk_masuk->count()}}</button> @endif </span> </a> </li> 
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                     href="{{route('master.bimbingan.ditanggapi')}}" aria-expanded="false"><i class="mdi mdi-check-all"></i><span
                         class="hide-menu">BK Ditanggapi</span></a></li>        

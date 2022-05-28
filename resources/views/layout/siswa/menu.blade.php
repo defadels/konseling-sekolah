@@ -46,13 +46,13 @@ $konseling_kelompok = LayananBK::where('dibuat_oleh_id',Auth::user()->id)->where
                             class="hide-menu">Pribadi @if(count($konseling_pribadi) > 0) <button class="btn btn-sm btn-info btn-rounded ml-3">{{$konseling_pribadi->count()}}</button> @endif</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="{{route('siswa.bimbingan.karir')}}" aria-expanded="false"><i class="mdi mdi-worker"></i><span
-                            class="hide-menu">Karir @if(count($bk_karir) > 0) <button class="btn btn-sm btn-info btn-rounded ml-3">{{$bk_karir->count()}}</button> @endif</span></a></li>
+                            class="hide-menu">Karir @if(count($bk_karir) > 0) <button class="btn btn-sm btn-info ml-3">{{$bk_karir->count()}}</button> @endif</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="{{route('siswa.bimbingan.kelompok')}}" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
-                            class="hide-menu">Kelompok @if(count($konseling_kelompok) > 0) <button class="btn btn-sm btn-info btn-rounded ml-3">{{$konseling_kelompok->count()}}</button> @endif</span></a></li>
+                            class="hide-menu">Kelompok @if(count($konseling_kelompok) > 0) <button class="btn btn-sm btn-info ml-3">{{$konseling_kelompok->count()}}</button> @endif</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="{{route('siswa.bimbingan.konseling.kelompok')}}" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
-                            class="hide-menu">BK Kelompok @if(count($bk_kelompok) > 0) <button class="btn btn-sm btn-info btn-rounded ml-3">{{$bk_kelompok->count()}}</button> @endif</span></a></li>
+                            class="hide-menu">BK Kelompok @if(count($bk_kelompok) > 0) <button class="btn btn-sm btn-info ml-3">{{$bk_kelompok->count()}}</button> @endif</span></a></li>
                 
 
                       

@@ -68,6 +68,7 @@ Route::prefix('guru')->name('guru.')->middleware('auth','tolakselainguru')->name
     Route::get('profile/{profile}','ProfileController@show')->name('profile');
 
     Route::get('siswa','SiswaController@index')->name('siswa');
+    Route::get('siswa/edit/{siswa}','SiswaController@edit')->name('siswa.edit');
     Route::get('siswa/lihat/{siswa}','SiswaController@show')->name('siswa.show');
 
 

@@ -68,10 +68,10 @@
                                     <td>{{ucfirst(trans($siswa->jenis_kelamin))}}</td>
                                     <td>{{$siswa->pilihan_kelas->nama}}</td>
                                     <td>
-                                        <a href="{{route('master.siswa.show',$siswa->id)}}" title="Lihat" class="btn btn-md btn-info">
+                                        <a href="{{route('guru.siswa.show',$siswa->id)}}" title="Lihat" class="btn btn-md btn-info">
                                             <i class="fas fa-eye"></i> Lihat
                                         </a>
-                                        <a href="{{route('master.siswa.edit',$siswa->id)}}" title="Edit" class="btn btn-md btn-success text-white">
+                                        <a href="{{route('guru.siswa.edit',$siswa->id)}}" title="Edit" class="btn btn-md btn-success text-white">
                                             <i class="far fa-edit"></i> Edit
                                         </a>
                                     </td>

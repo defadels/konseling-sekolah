@@ -48,9 +48,9 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $siswa)
     {
-        //
+        return view('guru.siswa.show',compact('siswa'));
     }
 
     /**
