@@ -39,7 +39,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Tabel Data BK Siswa</h5>
+                        <h5 class="card-title">Tabel Laporan Bimbingan Konseling</h5>
                         {{-- <h6 class="card-subtitle">Exporting data from a table can often be a key part of a
                             complex application. The Buttons extension for DataTables provides three plug-ins
                             that provide overlapping functionality for data export. You can refer full
