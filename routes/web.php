@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::get('/', 'FrontController@index')->name('front');
+
 Route::get('table', 'TableController@table')->name('table');
 
 Route::get('pintudepan', 'Auth\MasterRegisterController@showRegistrationForm')->name('pintudepan');
@@ -116,5 +118,5 @@ Route::prefix('siswa')->name('siswa.')->middleware('auth','tolakselainsiswa')->n
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
