@@ -48,29 +48,31 @@
                         
                         <div class="table-responsive">
                             @if(count($data_bk) > 0)  
-                            <table id="show_hide_col" class="table table-striped table-bordered display"
+                            <table id="default_order" class="table table-striped table-bordered display"
                                 style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nomor BK</th>
                                         <th>Nama Siswa</th>
+                                        <th>Kepada</th>
                                         <th>Jenis BK</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    
                                         @foreach($data_bk as $bk)  
                                         <tr>
                                             <td>{{$bk->nomor_bk}}</td>
                                             <td>{{$bk->dibuat_oleh->nama}}</td>
+                                            <td>{{$bk->ditanggapi_oleh->nama}}</td>
                                             <td>{{trans(ucfirst($bk->jenis))}}</td>
                                             <td> <a href="{{route('master.bimbingan.ditanggapi.show',$bk->id)}}" title="Lihat" class="btn btn-md btn-info">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </tr>
                                         @endforeach
-                                    </tr>   
+                                      
                                 </tbody>
                          
                             </table>

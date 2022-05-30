@@ -21,7 +21,7 @@ class BKMasukController extends Controller
      */
     public function index()
     {
-        $data_bk = LayananBK::where('kepada_guru_id',Auth::user()->id)->where('status','Belum Ditanggapi')->get();
+        $data_bk = LayananBK::orderBy('updated_at','ASC')->where('status','Belum Ditanggapi')->get();
 
         // dd($data_bk);
 

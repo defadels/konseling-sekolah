@@ -32,8 +32,8 @@ Route::get('/success', 'FrontController@show')->name('bimbingan.berhasil');
 
 Route::get('table', 'TableController@table')->name('table');
 
-Route::get('pintudepan', 'Auth\MasterRegisterController@showRegistrationForm')->name('pintudepan');
-Route::post('pintudepan', 'Auth\MasterRegisterController@create')->name('pintudepan.create');
+Route::get('register', 'Auth\MasterRegisterController@showRegistrationForm')->name('pintudepan');
+Route::post('register', 'Auth\MasterRegisterController@create')->name('pintudepan.create');
 
 Route::prefix('master')->name('master.')->middleware('auth','tolakselainmaster')->namespace('Master')->group(function(){
     Route::get('/', 'DashboardController@index')->name('dashboard');
@@ -69,63 +69,63 @@ Route::prefix('master')->name('master.')->middleware('auth','tolakselainmaster')
     Route::get('bimbingan-konseling/masuk','BKMasukController@index')->name('bimbingan.masuk');
     Route::get('bimbingan-konseling/masuk/lihat/{bk}','BKMasukController@show')->name('bimbingan.masuk.show');
     Route::get('bimbingan-konseling/masuk/tanggapi/{bk}','BKMasukController@edit')->name('bimbingan.masuk.tanggapi');
-    Route::put('bimbingan-konseling/masuk/{bk}','BKController@update')->name('bimbingan.masuk.update');
+    Route::put('bimbingan-konseling/masuk/{bk}','BKMasukController@update')->name('bimbingan.masuk.update');
 
     Route::get('bimbingan-konseling/ditanggapi','BKDitanggapiController@index')->name('bimbingan.ditanggapi');
     Route::get('bimbingan-konseling/ditanggapi/lihat/{bk}', 'BKDitanggapiController@show')->name('bimbingan.ditanggapi.show');
 });
 
-Route::prefix('guru')->name('guru.')->middleware('auth','tolakselainguru')->namespace('Guru')->group(function(){
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+// Route::prefix('guru')->name('guru.')->middleware('auth','tolakselainguru')->namespace('Guru')->group(function(){
+//     Route::get('/', 'DashboardController@index')->name('dashboard');
 
-    Route::get('profile/{profile}','ProfileController@show')->name('profile');
+//     Route::get('profile/{profile}','ProfileController@show')->name('profile');
 
-    Route::get('siswa','SiswaController@index')->name('siswa');
-    Route::get('siswa/edit/{siswa}','SiswaController@edit')->name('siswa.edit');
-    Route::get('siswa/lihat/{siswa}','SiswaController@show')->name('siswa.show');
+//     Route::get('siswa','SiswaController@index')->name('siswa');
+//     Route::get('siswa/edit/{siswa}','SiswaController@edit')->name('siswa.edit');
+//     Route::get('siswa/lihat/{siswa}','SiswaController@show')->name('siswa.show');
 
 
-    Route::get('guru','GuruController@index')->name('guru');
-    Route::get('guru/lihat/{guru}','GuruController@show')->name('guru.show');
+//     Route::get('guru','GuruController@index')->name('guru');
+//     Route::get('guru/lihat/{guru}','GuruController@show')->name('guru.show');
   
 
-    Route::get('kelas','KelasController@index')->name('kelas');
-    Route::get('kelas/lihat/{kelas}', 'KelasController@show')->name('kelas.show'); 
+//     Route::get('kelas','KelasController@index')->name('kelas');
+//     Route::get('kelas/lihat/{kelas}', 'KelasController@show')->name('kelas.show'); 
 
-    Route::get('bimbingan-konseling/masuk','BKMasukController@index')->name('bimbingan.masuk');
-    Route::get('bimbingan-konseling/masuk/lihat/{bk}','BKMasukController@show')->name('bimbingan.masuk.show');
-    Route::get('bimbingan-konseling/masuk/tanggapi/{bk}','BKMasukController@edit')->name('bimbingan.masuk.tanggapi');
-    Route::put('bimbingan-konseling/masuk/{bk}','BKController@update')->name('bimbingan.masuk.update');
+//     Route::get('bimbingan-konseling/masuk','BKMasukController@index')->name('bimbingan.masuk');
+//     Route::get('bimbingan-konseling/masuk/lihat/{bk}','BKMasukController@show')->name('bimbingan.masuk.show');
+//     Route::get('bimbingan-konseling/masuk/tanggapi/{bk}','BKMasukController@edit')->name('bimbingan.masuk.tanggapi');
+//     Route::put('bimbingan-konseling/masuk/{bk}','BKController@update')->name('bimbingan.masuk.update');
 
-    Route::get('bimbingan-konseling/ditanggapi','BKDitanggapiController@index')->name('bimbingan.ditanggapi');
-    Route::get('bimbingan-konseling/ditanggapi/lihat/{bk}', 'BKDitanggapiController@show')->name('bimbingan.ditanggapi.show');
-});
+//     Route::get('bimbingan-konseling/ditanggapi','BKDitanggapiController@index')->name('bimbingan.ditanggapi');
+//     Route::get('bimbingan-konseling/ditanggapi/lihat/{bk}', 'BKDitanggapiController@show')->name('bimbingan.ditanggapi.show');
+// });
 
-Route::prefix('siswa')->name('siswa.')->middleware('auth','tolakselainsiswa')->namespace('Siswa')->group(function(){
-    Route::get('/','DashboardController@index')->name('dashboard');
+// Route::prefix('siswa')->name('siswa.')->middleware('auth','tolakselainsiswa')->namespace('Siswa')->group(function(){
+//     Route::get('/','DashboardController@index')->name('dashboard');
 
-    Route::get('profile/{profile}','ProfileController@show')->name('profile');
+//     Route::get('profile/{profile}','ProfileController@show')->name('profile');
 
-    Route::get('bimbingan-konseling/karir','BKKarirController@index')->name('bimbingan.karir');
-    Route::get('bimbingan-konseling/karir/create', 'BKKarirController@create')->name('bimbingan.karir.create');
-    Route::post('bimbingan-konseling/karir', 'BKKarirController@store')->name('bimbingan.karir.store');
-    Route::get('bimbingan-konseling/karir/{data_bk}/show', 'BKKarirController@show')->name('bimbingan.karir.show');
+//     Route::get('bimbingan-konseling/karir','BKKarirController@index')->name('bimbingan.karir');
+//     Route::get('bimbingan-konseling/karir/create', 'BKKarirController@create')->name('bimbingan.karir.create');
+//     Route::post('bimbingan-konseling/karir', 'BKKarirController@store')->name('bimbingan.karir.store');
+//     Route::get('bimbingan-konseling/karir/{data_bk}/show', 'BKKarirController@show')->name('bimbingan.karir.show');
 
-    Route::get('bimbingan-konseling/konseling-kelompok','KonselingKelompokController@index')->name('bimbingan.konseling.kelompok');
-    Route::get('bimbingan-konseling/konseling-kelompok/create', 'KonselingKelompokController@create')->name('bimbingan.konseling.kelompok.create');
-    Route::post('bimbingan-konseling/konseling-kelompok', 'KonselingKelompokController@store')->name('bimbingan.konseling.kelompok.store');
-    Route::get('bimbingan-konseling/konseling-kelompok/{data_bk}/show', 'KonselingKelompokController@show')->name('bimbingan.konseling.kelompok.show');
+//     Route::get('bimbingan-konseling/konseling-kelompok','KonselingKelompokController@index')->name('bimbingan.konseling.kelompok');
+//     Route::get('bimbingan-konseling/konseling-kelompok/create', 'KonselingKelompokController@create')->name('bimbingan.konseling.kelompok.create');
+//     Route::post('bimbingan-konseling/konseling-kelompok', 'KonselingKelompokController@store')->name('bimbingan.konseling.kelompok.store');
+//     Route::get('bimbingan-konseling/konseling-kelompok/{data_bk}/show', 'KonselingKelompokController@show')->name('bimbingan.konseling.kelompok.show');
     
-    Route::get('bimbingan-konseling/kelompok','BKKelompokController@index')->name('bimbingan.kelompok');
-    Route::get('bimbingan-konseling/kelompok/create', 'BKKelompokController@create')->name('bimbingan.kelompok.create');
-    Route::post('bimbingan-konseling/kelompok', 'BKKelompokController@store')->name('bimbingan.kelompok.store');
-    Route::get('bimbingan-konseling/kelompok/{data_bk}/show', 'BKKelompokController@show')->name('bimbingan.kelompok.show');
+//     Route::get('bimbingan-konseling/kelompok','BKKelompokController@index')->name('bimbingan.kelompok');
+//     Route::get('bimbingan-konseling/kelompok/create', 'BKKelompokController@create')->name('bimbingan.kelompok.create');
+//     Route::post('bimbingan-konseling/kelompok', 'BKKelompokController@store')->name('bimbingan.kelompok.store');
+//     Route::get('bimbingan-konseling/kelompok/{data_bk}/show', 'BKKelompokController@show')->name('bimbingan.kelompok.show');
 
-    Route::get('bimbingan-konseling/pribadi','BKPribadiController@index')->name('bimbingan.pribadi');
-    Route::get('bimbingan-konseling/pribadi/create', 'BKPribadiController@create')->name('bimbingan.pribadi.create');
-    Route::post('bimbingan-konseling/pribadi', 'BKPribadiController@store')->name('bimbingan.pribadi.store');
-    Route::get('bimbingan-konseling/pribadi/{data_bk}/show', 'BKPribadiController@show')->name('bimbingan.pribadi.show');
-});
+//     Route::get('bimbingan-konseling/pribadi','BKPribadiController@index')->name('bimbingan.pribadi');
+//     Route::get('bimbingan-konseling/pribadi/create', 'BKPribadiController@create')->name('bimbingan.pribadi.create');
+//     Route::post('bimbingan-konseling/pribadi', 'BKPribadiController@store')->name('bimbingan.pribadi.store');
+//     Route::get('bimbingan-konseling/pribadi/{data_bk}/show', 'BKPribadiController@show')->name('bimbingan.pribadi.show');
+// });
 
 Auth::routes(['verify' => true]);
 

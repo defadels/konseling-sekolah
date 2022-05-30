@@ -54,6 +54,7 @@
                                     <th>Nama Siswa</th>
                                     <th>Kelas</th>
                                     <th>Jenis</th>
+                                    <th>Kepada</th>
                                     <th>Status</th>
                                     </tr>
                                 </thead>
@@ -68,6 +69,7 @@
                                     <td>{{$siswa->dibuat_oleh->nama}}</td>
                                     <td>{{$siswa->dibuat_oleh->pilihan_kelas->nama}}</td>
                                     <td>{{ucfirst(trans($siswa->jenis))}}</td>
+                                    <td>{{$siswa->ditanggapi_oleh->nama}}</td>
                                     <td>{{$siswa->status}}</td>
                               
                                 </tr>

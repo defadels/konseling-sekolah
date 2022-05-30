@@ -86,7 +86,7 @@ class GuruController extends Controller
             'mapel' => $request->mapel,
             'nomor_hp' => $request->nomor_hp,
             'status' => 'aktif',
-            'jenis' => 'guru'
+            'jenis' => 'master'
         ]);
 
         return redirect()->route('master.guru')

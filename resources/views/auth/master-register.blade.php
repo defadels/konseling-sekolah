@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register Akun Master') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pintudepan.create') }}">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
