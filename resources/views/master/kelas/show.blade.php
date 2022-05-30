@@ -1,6 +1,6 @@
 @extends('layout.master_layout')
 
-@section('title', 'Form Data Guru')
+@section('title', 'Lihat Data Kelas')
 
 @section('content')
 

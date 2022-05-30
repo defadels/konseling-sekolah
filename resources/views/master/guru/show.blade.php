@@ -1,6 +1,6 @@
 @extends('layout.master_layout')
 
-@section('title', 'Form Data Guru')
+@section('title', 'Lihat Data Guru')
 
 @section('content')
 
@@ -39,7 +39,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">File export</h4>
+                        <h4 class="card-title">Lihat Data Guru</h4>
                         <hr>
                         <div class="form-group">
                             <label for="nip">NIP</label>

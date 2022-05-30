@@ -39,7 +39,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">File export</h4>
+                        <h4 class="card-title">Form Data Guru</h4>
                         <hr>
                   <form action="{{route($url, $guru->id ?? '')}}" method="post">
                       @csrf
