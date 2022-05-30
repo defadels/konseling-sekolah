@@ -50,7 +50,7 @@
 
                     <div class="table-respnsive">
                         <h6>Masukkan Nama Anggota Kelompok</h6>
-                        <table class="table table-info" id="tabel_pesanan">
+                        <table class="table table-secondary" id="tabel_pesanan">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Nama Siswa</th>
