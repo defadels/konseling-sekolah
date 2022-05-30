@@ -20,9 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'FrontController@index')->name('front');
 
 Route::get('/karir', 'FrontController@karir')->name('bimbingan.karir');
+Route::post('/karir', 'FrontController@karirPost')->name('bimbingan.karir.store');
 Route::get('/pribadi', 'FrontController@pribadi')->name('bimbingan.pribadi');
+Route::post('/pribadi', 'FrontController@pribadiPost')->name('bimbingan.pribadi.store');
 Route::get('/kelompok', 'FrontController@kelompok')->name('bimbingan.kelompok');
+Route::post('/kelompok', 'FrontController@kelompokPost')->name('bimbingan.kelompok.store');
 Route::get('/konseling_kelompok', 'FrontController@konseling_kelompok')->name('bimbingan.konseling_kelompok');
+Route::post('/konseling_kelompok', 'FrontController@konseling_kelompokPost')->name('bimbingan.konseling_kelompok.store');
+
+Route::get('/success', 'FrontController@show')->name('bimbingan.berhasil');
 
 Route::get('table', 'TableController@table')->name('table');
 

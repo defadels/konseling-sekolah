@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('nis')->unique()->nullable();
             $table->string('nip')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->enum('status', ['aktif','nonaktif'])->default('aktif');
             $table->enum('agama', ['islam','kristen','protestan','hindu','buddha','khonghucu']);
             $table->enum('jenis', ['siswa','guru','master']);

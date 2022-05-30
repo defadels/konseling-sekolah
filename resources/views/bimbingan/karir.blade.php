@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h5 class="card-title">Bimbingan Konseling Karir</h5>
                 <hr>
-                <form action="" method="post">
+                <form action="{{route($url)}}" method="post">
                     @csrf
 
                     <div class="form-group">
@@ -58,7 +58,18 @@
 
                       </div>
                     
-                      <hr>
+                      
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Isi Pengaduan</h5>
+                <hr>
 
                     <div class="form-group">
                         <label for="judul_bk">Judul</label>
