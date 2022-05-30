@@ -65,7 +65,7 @@
                                             <td>{{$bk->nomor_bk}}</td>
                                             <td>{{$bk->dibuat_oleh->nama}}</td>
                                             <td>{{trans(ucfirst($bk->jenis))}}</td>
-                                            <td> <a href="{{route('guru.bimbingan.ditanggapi.show',$bk->id)}}" title="Lihat" class="btn btn-md btn-info">
+                                            <td> <a href="{{route('master.bimbingan.ditanggapi.show',$bk->id)}}" title="Lihat" class="btn btn-md btn-info">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </tr>
