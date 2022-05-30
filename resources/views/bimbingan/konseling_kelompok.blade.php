@@ -10,41 +10,11 @@
                 <hr>
                 <form action="{{route($url)}}" method="post">
                     @csrf
-
                     <div class="form-group">
-                        {!! Form::label('nama', 'Nama Siswa') !!}
-                        {!! Form::text('nama', old('nama'), ['class' => 'form-control', 'placeholder' => 'Masukkan nama siswa']) !!}
-                    
-                        @error('nama')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                      </div>
-
-                      <div class="form-group">
-                        {!! Form::label('nomor_hp','Nomor Telepon') !!}
-                        {!! Form::text('nomor_hp', old('nomor_hp'), ['class' => 'form-control', 'placeholder'=>'Masukkan nomor telepon']) !!}
-                        
-                        @error('nomor_hp')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                      </div>
-
-                    <div class="form-group">
-                      {!! Form::label('email', 'Email') !!}
-
-                      {!! Form::email('email', old('email'), ['class' => 'form-control' , 'placeholder' => 'Masukkan email siswa']) !!}
-                         
-                        @error('email')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-
-                      </div>
+                        {!! Form::label('dibuat_oleh_id', 'Nama Siswa') !!}
+    
+                        {!! Form::select('dibuat_oleh_id', $daftar_siswa, old('dibuat_oleh_id'), ['placeholder' => '--Pilih siswa--', 'class' => 'select2 form-control','id' => 'siswa']) !!}
+                    </div>
 
                       <br>
 

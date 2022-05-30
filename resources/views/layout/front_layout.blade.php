@@ -10,6 +10,7 @@
     <title>Konseling Sekolah</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/navbar-fixed/">
+    <link rel="stylesheet" type="text/css" href="{{asset('materialpro/assets/libs/select2/dist/css/select2.min.css')}}">
       <!-- Scripts -->
       <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -62,7 +63,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{route('front')}}">Beranda <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     {{-- <form class="form-inline mt-2 mt-md-0">
@@ -76,11 +77,15 @@
  @yield('content')
   
 </main>
+<script src="{{asset('materialpro/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
 
 
+<script src="{{asset('materialpro/assets/libs/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{asset('materialpro/assets/libs/select2/dist/js/select2.min.js')}}"></script>
+<script src="{{asset('materialpro/dist/js/pages/forms/select2/select2.init.js')}}"></script>
  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
 @yield('page_script')
   </body>
 </html>

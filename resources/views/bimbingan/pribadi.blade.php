@@ -12,51 +12,12 @@
                     @csrf
 
                     <div class="form-group">
-                        {!! Form::label('nama', 'Nama Siswa') !!}
-                        {!! Form::text('nama', old('nama'), ['class' => 'form-control', 'placeholder' => 'Masukkan nama siswa']) !!}
+                        {!! Form::label('dibuat_oleh_id', 'Nama Siswa') !!}
+    
+                        {!! Form::select('dibuat_oleh_id', $daftar_siswa, old('dibuat_oleh_id'), ['placeholder' => '--Pilih siswa--', 'class' => 'select2 form-control','id' => 'siswa']) !!}
+                    </div>
+
                     
-                        @error('nama')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                      </div>
-
-                    <div class="form-group">
-                        {!! Form::label('kelas_id', 'Kelas') !!}
-
-                        {!! Form::select('kelas_id', $daftar_kelas, old('kelas_id'), ['placeholder' => '--Pilih kelas--', 'class' => 'form-control']) !!}
-                        
-                        @error('kelas_id')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                      </div>
-
-                      <div class="form-group">
-                        {!! Form::label('nomor_hp','Nomor Telepon') !!}
-                        {!! Form::text('nomor_hp', old('nomor_hp'), ['class' => 'form-control', 'placeholder'=>'Masukkan nomor telepon']) !!}
-                        
-                        @error('nomor_hp')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-                      </div>
-
-                    <div class="form-group">
-                      {!! Form::label('email', 'Email') !!}
-
-                      {!! Form::email('email', old('email'), ['class' => 'form-control' , 'placeholder' => 'Masukkan email siswa']) !!}
-                         
-                        @error('email')
-                        <span class="text-danger">
-                            {{$message}}
-                        </span>
-                        @enderror
-
-                      </div>
                     
                    
             </div>
@@ -95,7 +56,7 @@
                 <div class="form-group">
                     {!! Form::label('kepada_guru_id', 'Ajukan Kepada Guru :') !!}
 
-                    {!! Form::select('kepada_guru_id', $daftar_guru, old('kepada_guru_id'), ['placeholder' => '--Pilih guru--', 'class' => 'form-control']) !!}
+                    {!! Form::select('kepada_guru_id', $daftar_guru, old('kepada_guru_id'), ['placeholder' => '--Pilih guru--', 'class' => 'select2 form-control','id' => 'guru']) !!}
                 </div>
 
                 <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
@@ -105,4 +66,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('page_script')
+    <script>
+        $(document).ready(function() {
+            $('#siswa').select2();
+            $('#guru').select2();
+        });
+    </script>
 @endsection

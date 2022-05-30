@@ -41,9 +41,13 @@ class FrontController extends Controller
 
         $daftar_kelas = Kelas::pluck('nama','id');
 
+        $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+
+        // dd($daftar_siswa);
+
         $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
 
-         return view('bimbingan.pribadi',compact('button','daftar_kelas','daftar_guru','url'));
+         return view('bimbingan.pribadi',compact('button','daftar_kelas','daftar_guru','url','daftar_siswa'));
      }
      
      public function pribadiPost(Request $request)
@@ -66,27 +70,20 @@ class FrontController extends Controller
 
         $nomorBK = 'BK/'.$sekarang->format('ymd').'/'.'PRIBADI/'.Str::upper(Str::random(4));
 
-        $siswa = new User;
-        $siswa->nama = $request->nama;
-        $siswa->kelas_id = $request->kelas_id;
-        $siswa->email = $request->email;
-        $siswa->password = Hash::make('sayasiswa');
-        $siswa->nomor_hp = $request->nomor_hp;
-        $siswa->jenis = 'siswa';
-        $siswa->save();
-
         $data_bk = new LayananBK;
         $data_bk->judul_bk = $request->judul_bk;
         $data_bk->nomor_bk = $request->nomor_bk = $nomorBK;
         $data_bk->pokok_pembahasan = $request->pokok_pembahasan;
-        $data_bk->dibuat_oleh_id = $siswa->id;
+        $data_bk->dibuat_oleh_id = $request->dibuat_oleh_id;
         $data_bk->kepada_guru_id = $request->kepada_guru_id;
         $data_bk->status = 'Belum Ditanggapi';
         $data_bk->jenis = 'Konseling Pribadi';
         $data_bk->save();
 
+        $siswa = User::find($request->dibuat_oleh_id);
+
         $data_siswa = new BKSiswa;
-        $data_siswa->nama_siswa = $siswa->nama;
+        $data_siswa->nama_siswa = $data_bk->dibuat_oleh->nama;
         $data_siswa->kelas = $siswa->pilihan_kelas->nama;
         $data_siswa->bk_siswa_id = $data_bk->id;
         $data_siswa->save();
@@ -103,9 +100,11 @@ class FrontController extends Controller
 
          $daftar_kelas = Kelas::pluck('nama','id');
 
+         $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+
          $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
 
-         return view('bimbingan.kelompok',compact('button','daftar_kelas','daftar_guru','url'));
+         return view('bimbingan.kelompok',compact('button','daftar_kelas','daftar_guru','url','daftar_siswa'));
      }
      
      public function kelompokPost(Request $request)
@@ -130,22 +129,13 @@ class FrontController extends Controller
 
         $nomorBK = 'BK/'.$sekarang->format('ymd').'/'.'BIMBINGAN-KONSELING-KELOMPOK/'.Str::upper(Str::random(4));
         
-        $siswa = new User;
-        $siswa->nama = $request->nama;
-        $siswa->kelas_id = $request->kelas_id;
-        $siswa->email = $request->email;
-        $siswa->password = Hash::make('sayasiswa');
-        $siswa->nomor_hp = $request->nomor_hp;
-        $siswa->jenis = 'siswa';
-        $siswa->save();
-
         $data_bk = new LayananBK;
         $data_bk->nomor_bk = $request->nomor_bk = $nomorBK;
         $data_bk->judul_bk = $input['judul_bk'];
         $data_bk->pokok_pembahasan = $input['pokok_pembahasan'];
         $data_bk->status = 'Belum Ditanggapi';
         $data_bk->jenis = 'Bimbingan Konseling Kelompok';
-        $data_bk->dibuat_oleh_id = $siswa->id;
+        $data_bk->dibuat_oleh_id = $request->dibuat_oleh_id;
         $data_bk->kepada_guru_id = $request->kepada_guru_id;
         $data_bk->save();
 
@@ -191,11 +181,15 @@ class FrontController extends Controller
 
         $url = 'bimbingan.konseling_kelompok.store';
 
+        $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+
+        
+
         $daftar_kelas = Kelas::pluck('nama','id');
 
         $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
 
-         return view('bimbingan.konseling_kelompok',compact('button','daftar_kelas','daftar_guru','url'));
+         return view('bimbingan.konseling_kelompok',compact('button','daftar_kelas','daftar_guru','url','daftar_siswa'));
      }
      
      public function konseling_kelompokPost(Request $request)
@@ -219,15 +213,6 @@ class FrontController extends Controller
         $sekarang = Carbon::now();
 
         $nomorBK = 'BK/'.$sekarang->format('ymd').'/'.'KONSELING-KELOMPOK/'.Str::upper(Str::random(4));
-        
-        $siswa = new User;
-        $siswa->nama = $request->nama;
-        $siswa->kelas_id = $request->kelas_id;
-        $siswa->email = $request->email;
-        $siswa->password = Hash::make('sayasiswa');
-        $siswa->nomor_hp = $request->nomor_hp;
-        $siswa->jenis = 'siswa';
-        $siswa->save();
 
         $data_bk = new LayananBK;
         $data_bk->nomor_bk = $request->nomor_bk = $nomorBK;
@@ -235,7 +220,7 @@ class FrontController extends Controller
         $data_bk->pokok_pembahasan = $input['pokok_pembahasan'];
         $data_bk->status = 'Belum Ditanggapi';
         $data_bk->jenis = 'Konseling Kelompok';
-        $data_bk->dibuat_oleh_id = $siswa->id;
+        $data_bk->dibuat_oleh_id = $request->dibuat_oleh_id;
         $data_bk->kepada_guru_id = $request->kepada_guru_id;
         $data_bk->save();
 
@@ -283,9 +268,11 @@ class FrontController extends Controller
 
         $daftar_kelas = Kelas::pluck('nama','id');
 
+        $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+
         $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
 
-         return view('bimbingan.karir',compact('button','daftar_kelas','daftar_guru','url'));
+         return view('bimbingan.karir',compact('button','daftar_kelas','daftar_guru','url','daftar_siswa'));
      }
      
      public function karirPost(Request $request)
@@ -308,27 +295,20 @@ class FrontController extends Controller
 
         $nomorBK = 'BK/'.$sekarang->format('ymd').'/'.'KARIR/'.Str::upper(Str::random(4));
 
-        $siswa = new User;
-        $siswa->nama = $request->nama;
-        $siswa->kelas_id = $request->kelas_id;
-        $siswa->email = $request->email;
-        $siswa->password = Hash::make('sayasiswa');
-        $siswa->nomor_hp = $request->nomor_hp;
-        $siswa->jenis = 'siswa';
-        $siswa->save();
-
         $data_bk = new LayananBK;
         $data_bk->judul_bk = $request->judul_bk;
         $data_bk->nomor_bk = $request->nomor_bk = $nomorBK;
         $data_bk->pokok_pembahasan = $request->pokok_pembahasan;
-        $data_bk->dibuat_oleh_id = $siswa->id;
+        $data_bk->dibuat_oleh_id = $request->dibuat_oleh_id;
         $data_bk->kepada_guru_id = $request->kepada_guru_id;
         $data_bk->status = 'Belum Ditanggapi';
         $data_bk->jenis = 'Bimbingan Konseling Karir';
         $data_bk->save();
+        
+        $siswa = User::find($request->dibuat_oleh_id);
 
         $data_siswa = new BKSiswa;
-        $data_siswa->nama_siswa = $siswa->nama;
+        $data_siswa->nama_siswa = $data_bk->dibuat_oleh->nama;
         $data_siswa->kelas = $siswa->pilihan_kelas->nama;
         $data_siswa->bk_siswa_id = $data_bk->id;
         $data_siswa->save();
