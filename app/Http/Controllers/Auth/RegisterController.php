@@ -54,16 +54,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'nis' => ['max:20','unique:users,nis'],
-    //         'nama' => ['required', 'string', 'max:255'],
-    //         'tempat_lahir' => ['required'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //     ]);
-    // }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'nip' => ['nullable','max:12', 'unique:users'],
+            'nama' => ['required', 'string', 'max:255'],
+            'email' => ['required',  'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed'],
+        ]);
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -71,39 +70,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    public function create(Request $request)
+    protected function create(array $data)
     {
-        $input = $request->all();
-
-        $rules = [
-            'nip' => ['nullable','max:12', 'unique:users'],
-            'nama' => ['required', 'string', 'max:255'],
-            'email' => ['required',  'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'confirmed'],
-        ];
-
-        $validate = Validator::make($input, $rules)->validate();
-
-     $user = new User;
-
-     $user->nip = $request['nip'];
-     $user->nama = $request['nama'];
-     $user->email = $request['email'];
-     $user->password = Hash::make($request['password']);
-     $user->jenis = 'master';
-     $user->save();
-
-
-     $data = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-     ]);
-
-      if(Auth::attempt($data)){
-          $request->session()->regenerate();
-          
-          return redirect()->route('home');
-      }  
-            return redirect()->route('pintudepan');
+        return User::create([
+            'nip' => $data['nis'],
+            'nama' => $data['nama'],
+            'email' => $data['email'],
+            'jenis' => 'master',
+            'password' => Hash::make($data['password']),
+        ]);
     }
 }
