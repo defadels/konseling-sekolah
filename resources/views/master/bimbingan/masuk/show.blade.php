@@ -1,5 +1,7 @@
 @extends('layout.master_layout')
 
+@section('title','Lihat Data Bimbingan Konseling')
+
 @section('content')
 
     <!-- ============================================================== -->

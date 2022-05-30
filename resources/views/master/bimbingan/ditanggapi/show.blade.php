@@ -54,7 +54,7 @@
                         </div>
                     </div>
                         
-                    @if(count($daftar_siswa) > 0)
+                    @if(count($daftar_siswa) > 1)
                     <div class="row mb-3">
                         <div class="col-lg-12">
                             <p><strong>Daftar Nama Siswa</strong></p>
