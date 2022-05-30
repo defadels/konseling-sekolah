@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontController@index')->name('front');
 
+Route::get('/karir', 'FrontController@karir')->name('bimbingan.karir');
+Route::get('/pribadi', 'FrontController@pribadi')->name('bimbingan.pribadi');
+Route::get('/kelompok', 'FrontController@kelompok')->name('bimbingan.kelompok');
+Route::get('/konseling_kelompok', 'FrontController@konseling_kelompok')->name('bimbingan.konseling_kelompok');
+
 Route::get('table', 'TableController@table')->name('table');
 
 Route::get('pintudepan', 'Auth\MasterRegisterController@showRegistrationForm')->name('pintudepan');

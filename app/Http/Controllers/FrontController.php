@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Str;
+use App\User;
+use Validator;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Kelas;
 
 class FrontController extends Controller
 {
@@ -21,6 +27,53 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+     public function pribadi()
+     {
+        $button = "Simpan";
+
+        $daftar_kelas = Kelas::pluck('nama','id');
+
+        $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
+
+         return view('bimbingan.pribadi',compact('button','daftar_kelas','daftar_guru'));
+     }
+     
+     public function kelompok()
+     {
+         $button = "Simpan";
+
+         $daftar_kelas = Kelas::pluck('nama','id');
+
+         $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
+
+         return view('bimbingan.kelompok',compact('button','daftar_kelas','daftar_guru'));
+     }
+     
+     public function konseling_kelompok()
+     {
+        $button = "Simpan";
+
+        $daftar_kelas = Kelas::pluck('nama','id');
+
+        $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
+
+         return view('bimbingan.konseling_kelompok',compact('button','daftar_kelas','daftar_guru'));
+     }
+
+     public function karir()
+     {
+        $button = "Simpan";
+
+        $daftar_kelas = Kelas::pluck('nama','id');
+
+        $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
+
+         return view('bimbingan.karir',compact('button','daftar_kelas','daftar_guru'));
+     }
+
+
     public function create()
     {
         //
