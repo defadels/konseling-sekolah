@@ -18,7 +18,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $daftar_guru = User::where('jenis','guru')->get();
+        $daftar_guru = User::where('jenis','master')->get();
 
         $status= [
             'aktif' => 'Aktif',

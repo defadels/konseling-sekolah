@@ -41,7 +41,7 @@ class FrontController extends Controller
 
         $daftar_kelas = Kelas::pluck('nama','id');
 
-        $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+        $daftar_siswa = User::where('jenis','siswa')->get();
 
         // dd($daftar_siswa);
 
@@ -100,7 +100,7 @@ class FrontController extends Controller
 
          $daftar_kelas = Kelas::pluck('nama','id');
 
-         $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+         $daftar_siswa = User::where('jenis','siswa')->get();
 
          $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
 
@@ -181,7 +181,7 @@ class FrontController extends Controller
 
         $url = 'bimbingan.konseling_kelompok.store';
 
-        $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+        $daftar_siswa = User::where('jenis','siswa')->get();
 
         
 
@@ -268,7 +268,7 @@ class FrontController extends Controller
 
         $daftar_kelas = Kelas::pluck('nama','id');
 
-        $daftar_siswa = User::where('jenis','siswa')->pluck('nama','id');
+        $daftar_siswa = User::where('jenis','siswa')->get();
 
         $daftar_guru = User::whereIn('jenis',['guru','master'])->pluck('nama','id');
 

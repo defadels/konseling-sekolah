@@ -49,7 +49,7 @@
                         
                         <div class="table-responsive">
                             @if(count($daftar_guru)>0) 
-                            <table id="zero_config" class="table table-striped table-bordered"
+                            <table id="show_hide_col" class="table table-striped table-bordered display"
                                 style="width:100%">
                                 <thead>
                                     <tr>

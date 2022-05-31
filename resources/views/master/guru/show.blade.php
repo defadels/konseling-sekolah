@@ -71,6 +71,11 @@
                             
                             <p>{{$guru->alamat}}</p>
                         </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            
+                            <p>{{$guru->password}}</p>
+                        </div>
                     
                         <button type="button" class="btn btn-md btn-secondary" onclick="window.history.back()">Kembali</button>
                        

@@ -6,14 +6,24 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Bimbingan Konseling Kelompok</h5>
+                <h5 class="card-title">Bimbingan Kelompok</h5>
                 <hr>
                 <form action="{{route($url)}}" method="post">
                     @csrf
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         {!! Form::label('dibuat_oleh_id', 'Nama Siswa') !!}
     
                         {!! Form::select('dibuat_oleh_id', $daftar_siswa, old('dibuat_oleh_id'), ['placeholder' => '--Pilih siswa--', 'class' => 'select2 form-control','id' => 'siswa']) !!}
+                    </div> --}}
+
+                    <div class="form-group">
+                        <label for="dibuat_oleh_id">Nama Siswa</label>
+                        <select name="dibuat_oleh_id" class="select2 form-control" id="">
+                            <option value="">Pilih Siswa</option>
+                            @foreach($daftar_siswa as $siswa)
+                                <option value="{{$siswa->id}}">{{$siswa->nama}} [{{$siswa->nis}}][Kelas - {{$siswa->pilihan_kelas->nama}}]</option>
+                            @endforeach
+                        </select>
                     </div>
 
                       <br>

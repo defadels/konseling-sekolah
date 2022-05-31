@@ -7,7 +7,7 @@
       <hr>
       <br>
       <div class="jumbotron">
-          <h2>Bimbingan Konseling Pribadi</h2>
+          <h2>Konseling Individual</h2>
           <p>Bimbingan langsung saat tatap muka, per individu, dengan bantuan guru ahli untuk membicarakan dan mencari solusi masalah agar perkembangan siswa lebih baik.</p>
           <a class="btn btn-md btn-primary" href="{{route('bimbingan.pribadi')}}" role="button">Pilih layanan &raquo;</a>
         </div>
@@ -22,7 +22,7 @@
           <a class="btn btn-md btn-primary" href="{{route('bimbingan.konseling_kelompok')}}" role="button">Pilih layanan &raquo;</a>
         </div>
         <div class="jumbotron">
-          <h2>Bimbingan Konseling Kelompok</h2>
+          <h2>Bimbingan Kelompok</h2>
           <p>Membantu sejumlah siswa bersama-sama dalam kelompok untuk mendapatkan bahan dan penjelasan tentang pokok bahasan. Tujuannya agar siswa lebih paham dan mampu berkembang secara sosial. Fungsinya adalah untuk pengentasan dan juga advokasi.</p>
           <a class="btn btn-md btn-primary" href="{{route('bimbingan.kelompok')}}" role="button">Pilih layanan &raquo;</a>
         </div>

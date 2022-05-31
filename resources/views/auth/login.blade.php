@@ -58,8 +58,8 @@
                                 </button>
 
                                 
-                                    <a class="btn btn-link" href="{{ route('register') }}">
-                                        {{ __('Belum Punya Akun?') }}
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Lupa Password?') }}
                                     </a>
                                
                             </div>
