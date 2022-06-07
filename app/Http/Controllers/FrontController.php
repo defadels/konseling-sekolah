@@ -56,12 +56,18 @@ class FrontController extends Controller
 
         $rules = [
             'judul_bk' => 'required',
-            'pokok_pembahasan' => 'required'
+            'dibuat_oleh_id' => 'required',
+            'judul_bk' => 'required',
+            'pokok_pembahasan' => 'required',
+            'kepada_guru_id' => 'required'
         ];
 
         $message = [
             'judul_bk.required' => 'Judul harus dibuat',
+            'dibuat_oleh_id.required' => 'Nama siswa harus dipilih',
+            'judul_bk.required' => 'Judul bk harus diisi',
             'pokok_pembahasan.required' => 'Pokok pembahasan harus dibuat',
+            'kepada_guru_id.required' => 'Guru penanggung jawab harus dipilih'
         ];
 
         $validates = Validator::make($input, $rules, $message)->validate();
@@ -115,12 +121,18 @@ class FrontController extends Controller
 
         $rules = [
             'judul_bk' => 'required',
-            'pokok_pembahasan' => 'required'
+            'dibuat_oleh_id' => 'required',
+            'judul_bk' => 'required',
+            'pokok_pembahasan' => 'required',
+            'kepada_guru_id' => 'required'
         ];
 
         $message = [
             'judul_bk.required' => 'Judul harus dibuat',
+            'dibuat_oleh_id.required' => 'Nama siswa harus dipilih',
+            'judul_bk.required' => 'Judul bk harus diisi',
             'pokok_pembahasan.required' => 'Pokok pembahasan harus dibuat',
+            'kepada_guru_id.required' => 'Guru penanggung jawab harus dipilih'
         ];
 
         $validates = Validator::make($input, $rules, $message)->validate();
@@ -200,12 +212,18 @@ class FrontController extends Controller
 
         $rules = [
             'judul_bk' => 'required',
-            'pokok_pembahasan' => 'required'
+            'dibuat_oleh_id' => 'required',
+            'judul_bk' => 'required',
+            'pokok_pembahasan' => 'required',
+            'kepada_guru_id' => 'required'
         ];
 
         $message = [
             'judul_bk.required' => 'Judul harus dibuat',
+            'dibuat_oleh_id.required' => 'Nama siswa harus dipilih',
+            'judul_bk.required' => 'Judul bk harus diisi',
             'pokok_pembahasan.required' => 'Pokok pembahasan harus dibuat',
+            'kepada_guru_id.required' => 'Guru penanggung jawab harus dipilih'
         ];
 
         $validates = Validator::make($input, $rules, $message)->validate();
@@ -281,12 +299,18 @@ class FrontController extends Controller
 
         $rules = [
             'judul_bk' => 'required',
-            'pokok_pembahasan' => 'required'
+            'dibuat_oleh_id' => 'required',
+            'judul_bk' => 'required',
+            'pokok_pembahasan' => 'required',
+            'kepada_guru_id' => 'required'
         ];
 
         $message = [
             'judul_bk.required' => 'Judul harus dibuat',
+            'dibuat_oleh_id.required' => 'Nama siswa harus dipilih',
+            'judul_bk.required' => 'Judul bk harus diisi',
             'pokok_pembahasan.required' => 'Pokok pembahasan harus dibuat',
+            'kepada_guru_id.required' => 'Guru penanggung jawab harus dipilih'
         ];
 
         $validates = Validator::make($input, $rules, $message)->validate();
